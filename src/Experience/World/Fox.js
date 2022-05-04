@@ -53,7 +53,7 @@ export default class Fox
         this.animation.actions.walking = this.animation.mixer.clipAction(this.resource.animations[1])
         this.animation.actions.running = this.animation.mixer.clipAction(this.resource.animations[2])
         
-        this.animation.actions.current = this.animation.actions.idle
+        this.animation.actions.current = this.animation.actions.walking
         this.animation.actions.current.play()
 
         // Play the action

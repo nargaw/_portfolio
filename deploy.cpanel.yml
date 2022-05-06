@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/natejayn/public_html/
+    - /dist index.html $DEPLOYPATH

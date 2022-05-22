@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-
+import Loading from './Utils/Loading.js'
 import Debug from './Utils/Debug.js'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
@@ -34,6 +34,7 @@ export default class Experience
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
+        this.loading = new Loading()
         this.resources = new Resources(sources)
         this.camera = new Camera()
         this.renderer = new Renderer()

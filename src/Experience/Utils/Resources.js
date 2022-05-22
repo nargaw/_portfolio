@@ -1,6 +1,9 @@
 import * as THREE from 'three'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import EventEmitter from './EventEmitter.js'
+import gsap from 'gsap'
+import Experience from '../Experience'
 
 export default class Resources extends EventEmitter
 {
@@ -8,6 +11,10 @@ export default class Resources extends EventEmitter
     {
         super()
 
+        this.experience = new Experience()
+        this.loading = this.experience.loading
+        this.overlayMaterial = this.loading.overlayMaterial
+        this.loadingElement = document.querySelector('.percent')
         this.sources = sources
 
         this.items = {}
@@ -24,6 +31,14 @@ export default class Resources extends EventEmitter
         this.loaders.gltfLoader = new GLTFLoader()
         this.loaders.textureLoader = new THREE.TextureLoader()
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+    }
+
+    setDraco()
+    {
+        this.dracoLoader = new DRACOLoader()
+        this.dracoLoader.setDecoderPath('/draco/')
+        this.dracoGltfLoader = new GLTFLoader()
+        this.dracoGltfLoader.setDRACOLoader(this.dracoLoader)
     }
 
     startLoading()
@@ -61,6 +76,16 @@ export default class Resources extends EventEmitter
                     }
                 )
             }
+            else if(source.type === 'dracoModel')
+            {
+                this.dracoGltfLoader.load(
+                    source.path,
+                    (file) => 
+                    {
+                        this.sourceLoaded(source, file)
+                    }
+                )
+            }
         }
     }
 
@@ -70,9 +95,36 @@ export default class Resources extends EventEmitter
 
         this.loaded++
 
+        this.loadedPercent = Math.round(this.loaded/this.toLoad) * 100
+        this.toLoadPercent = 100
+        this.delay = 4000
+
+        this.setNum = (currentNum, newNum) => {
+            if(currentNum === newNum) return
+            // if(currentNum === newNum && this.loadedPercent === 100){
+            //     this.loadingElement.innerHTML = "Loading Complete"
+            //     return
+            // }
+            this.updateSpeed = this.delay / Math.abs(currentNum - newNum)
+            this.count = currentNum > newNum ? 0 : 1
+            this.timer = setInterval(() => {
+                currentNum += this.count
+                document.querySelector('.percent').innerHTML = "Loading " + currentNum + "%"
+                if(currentNum === newNum - 1) clearInterval(this.timer)
+            }, this.updateSpeed)
+        }
+        this.setNum(this.loadedPercent, this.toLoadPercent)
+
         if(this.loaded === this.toLoad)
         {
             this.trigger('ready')
+            window.setTimeout(() => {
+                gsap.to(this.overlayMaterial.uniforms.uAlpha, {duration:4, value: 0})
+                this.loadingElement.innerHTML = "Loading Complete"
+                this.loadingElement.classList.add('ended')
+                // this.buttonsElement.classList.remove('off')
+                // this.keyboardElement.classList.remove('off')
+            }, 6000)
         }
     }
 }

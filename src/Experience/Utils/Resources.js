@@ -100,10 +100,10 @@ export default class Resources extends EventEmitter
         this.delay = 4000
 
         this.setNum = (currentNum, newNum) => {
-            console.log(this.loaded)
-            console.log(this.toLoad)
-            console.log(this.loadedPercent)
-            console.log(this.toLoadPercent)
+            // console.log(this.loaded)
+            // console.log(this.toLoad)
+            // console.log(this.loadedPercent)
+            // console.log(this.toLoadPercent)
             if(currentNum === newNum) return
             // if(currentNum === newNum && this.loadedPercent === 100){
             //     this.loadingElement.innerHTML = "Loading Complete"

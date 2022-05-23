@@ -2,7 +2,7 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 import Fox from './Fox.js'
-import Portal from './Portal.js'
+import Portal from './Portal/Portal.js'
 import UnderConstruction from './UnderConstruction.js'
 
 export default class World
@@ -21,13 +21,17 @@ export default class World
             this.fox = new Fox()
             this.portal = new Portal()
             this.environment = new Environment()
-            this.placeHolder = new UnderConstruction()
+            //this.placeHolder = new UnderConstruction()
         })
     }
 
     update()
     {
-        if(this.fox)
+        if(this.fox){
             this.fox.update()
+        }
+        if(this.portal){
+            this.portal.update()
+        }   
     }
 }

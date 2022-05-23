@@ -31,5 +31,10 @@ export default [
         name: 'portalModel',
         type: 'gltfModel',
         path: 'models/Portal/portalMerged.glb'
+    },
+    {
+        name: 'portalTexture',
+        type: 'texture',
+        path: 'textures/portalTexture/baked.jpg'
     }
 ]

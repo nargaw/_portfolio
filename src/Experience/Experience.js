@@ -9,6 +9,7 @@ import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 
 import sources from './sources.js'
+import StatDebug from './Utils/Stats.js'
 
 let instance = null
 
@@ -31,6 +32,7 @@ export default class Experience
 
         // Setup
         this.debug = new Debug()
+        this.stats = new StatDebug()
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
@@ -64,6 +66,7 @@ export default class Experience
         this.camera.update()
         this.world.update()
         this.renderer.update()
+        this.stats.update()
     }
 
     destroy()

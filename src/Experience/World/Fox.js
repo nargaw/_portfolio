@@ -28,6 +28,8 @@ export default class Fox
     {
         this.model = this.resource.scene
         this.model.scale.set(0.02, 0.02, 0.02)
+        this.model.rotation.set(0, Math.PI, 0)
+        this.model.position.set(0, 0, 5)
         this.scene.add(this.model)
 
         this.model.traverse((child) =>
@@ -53,7 +55,7 @@ export default class Fox
         this.animation.actions.walking = this.animation.mixer.clipAction(this.resource.animations[1])
         this.animation.actions.running = this.animation.mixer.clipAction(this.resource.animations[2])
         
-        this.animation.actions.current = this.animation.actions.walking
+        this.animation.actions.current = this.animation.actions.idle
         this.animation.actions.current.play()
 
         // Play the action

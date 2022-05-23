@@ -10,6 +10,8 @@ import Resources from './Utils/Resources.js'
 
 import sources from './sources.js'
 import StatDebug from './Utils/Stats.js'
+import Physics from './Utils/Physics.js'
+import PhysicsDebugger from './Utils/PhysicsDebug.js'
 
 let instance = null
 
@@ -38,6 +40,8 @@ export default class Experience
         this.scene = new THREE.Scene()
         this.loading = new Loading()
         this.resources = new Resources(sources)
+        this.physics = new Physics()
+        this.physicsDebugger = new PhysicsDebugger()
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
@@ -66,6 +70,8 @@ export default class Experience
         this.camera.update()
         this.world.update()
         this.renderer.update()
+        this.physics.update()
+        this.physicsDebugger.update()
         this.stats.update()
     }
 

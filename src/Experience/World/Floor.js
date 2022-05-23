@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
+import * as CANNON from 'cannon-es'
 
 export default class Floor
 {
@@ -7,12 +8,29 @@ export default class Floor
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
+        this.physics = this.experience.physics
+        this.world = this.physics.world
         this.resources = this.experience.resources
 
-        this.setGeometry()
-        this.setTextures()
-        this.setMaterial()
-        this.setMesh()
+        this.setPhysics()
+        // this.setGeometry()
+        // this.setTextures()
+        // this.setMaterial()
+        // this.setMesh()
+    }
+
+    setPhysics()
+    {
+        this.groundShape = new CANNON.Plane()
+        this.groundBody = new CANNON.Body(
+            {
+                mass: 0,
+                material: this.physics.defaultMaterial
+            }
+        )
+        this.groundBody.addShape(this.groundShape)
+        this.groundBody.quaternion.setFromEuler(Math.PI * 0.5, 0, 0)
+        this.world.addBody(this.groundBody)
     }
 
     setGeometry()

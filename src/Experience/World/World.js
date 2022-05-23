@@ -17,8 +17,9 @@ export default class World
         this.resources.on('ready', () =>
         {
             // Setup
-            //this.floor = new Floor()
+            
             this.fox = new Fox()
+            this.floor = new Floor()
             this.portal = new Portal()
             this.environment = new Environment()
             //this.placeHolder = new UnderConstruction()

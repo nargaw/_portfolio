@@ -1,5 +1,7 @@
+import CannonDebugger from 'cannon-es-debugger'
 import * as THREE from 'three'
 import Experience from '../Experience.js'
+import * as CANNON from 'cannon-es'
 
 export default class Fox
 {
@@ -7,9 +9,13 @@ export default class Fox
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
+        this.physics = this.experience.physics
+        this.world = this.physics.world
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
+
+        this.objectsToUpdate= []
 
         // Debug
         if(this.debug.active)
@@ -22,6 +28,7 @@ export default class Fox
 
         this.setModel()
         this.setAnimation()
+        this.setPhysics()
     }
 
     setModel()
@@ -82,6 +89,29 @@ export default class Fox
             this.debugFolder.add(debugObject, 'playIdle')
             this.debugFolder.add(debugObject, 'playWalking')
             this.debugFolder.add(debugObject, 'playRunning')
+        }
+    }
+
+    setPhysics()
+    {
+        this.foxShape = new CANNON.Box(new CANNON.Vec3(0.2, 0.5, 0.2))
+        this.foxBody = new CANNON.Body({
+            mass: 0,
+            material: this.physics.defaultMaterial
+        })
+        this.foxBody.addShape(this.foxShape, new CANNON.Vec3(0, 0.75, 0))
+        this.foxBody.position.copy(this.model.position)
+        this.world.addBody(this.foxBody)
+
+        this.objectsToUpdate.push({
+            mesh: this.model,
+            body: this.foxBody
+        })
+    }
+
+    updatePosition(){
+        for(obj of this.objectsToUpdate){
+            
         }
     }
 

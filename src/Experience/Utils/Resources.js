@@ -95,18 +95,22 @@ export default class Resources extends EventEmitter
 
         this.loaded++
 
-        this.loadedPercent = Math.round(this.loaded/this.toLoad) * 100
+        this.loadedPercent = (this.loaded/this.toLoad) * 100
         this.toLoadPercent = 100
         this.delay = 4000
 
         this.setNum = (currentNum, newNum) => {
+            console.log(this.loaded)
+            console.log(this.toLoad)
+            console.log(this.loadedPercent)
+            console.log(this.toLoadPercent)
             if(currentNum === newNum) return
             // if(currentNum === newNum && this.loadedPercent === 100){
             //     this.loadingElement.innerHTML = "Loading Complete"
             //     return
             // }
             this.updateSpeed = this.delay / Math.abs(currentNum - newNum)
-            this.count = currentNum > newNum ? 0 : 1
+            this.count = currentNum > newNum ? -1 : 1
             this.timer = setInterval(() => {
                 currentNum += this.count
                 document.querySelector('.percent').innerHTML = "Loading " + currentNum + "%"

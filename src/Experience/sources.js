@@ -26,5 +26,10 @@ export default [
         name: 'foxModel',
         type: 'gltfModel',
         path: 'models/Fox/glTF/Fox.gltf'
+    },
+    {
+        name: 'portalModel',
+        type: 'gltfModel',
+        path: 'models/Portal/portalMerged.glb'
     }
 ]

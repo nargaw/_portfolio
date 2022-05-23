@@ -31,8 +31,7 @@ body
 
 .percent.ended
 {
-    -webkit-animation: 2.5s ease 0s normal forwards 1 fadeout;
-    animation: 2.5s ease 0s normal forwards 1 fadeout;
+    display: none;
 }
 
 @keyframes fadeout {

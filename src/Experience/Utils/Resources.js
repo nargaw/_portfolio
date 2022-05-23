@@ -95,7 +95,7 @@ export default class Resources extends EventEmitter
 
         this.loaded++
 
-        this.loadedPercent = (this.loaded/this.toLoad) * 100
+        this.loadedPercent = 0
         this.toLoadPercent = 100
         this.delay = 4000
 
@@ -112,7 +112,9 @@ export default class Resources extends EventEmitter
             this.updateSpeed = this.delay / Math.abs(currentNum - newNum)
             this.count = currentNum > newNum ? -1 : 1
             this.timer = setInterval(() => {
-                currentNum += this.count
+                if(currentNum <= 98){
+                    currentNum += this.count
+                }
                 document.querySelector('.percent').innerHTML = "Loading " + currentNum + "%"
                 if(currentNum === newNum - 1) clearInterval(this.timer)
             }, this.updateSpeed)

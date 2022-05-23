@@ -10,6 +10,7 @@ export default class Portal
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
-        //this.resource = this.resources.items.foxModel
+        this.resource = this.resources.items.portalModel
+        console.log(this.resource)
     }
 }

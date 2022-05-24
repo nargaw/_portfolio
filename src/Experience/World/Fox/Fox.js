@@ -1,7 +1,7 @@
-import CannonDebugger from 'cannon-es-debugger'
 import * as THREE from 'three'
-import Experience from '../Experience.js'
+import Experience from '../../Experience.js'
 import * as CANNON from 'cannon-es'
+import FoxControls from './foxControls.js'
 
 export default class Fox
 {
@@ -12,6 +12,7 @@ export default class Fox
         this.physics = this.experience.physics
         this.world = this.physics.world
         this.resources = this.experience.resources
+        this.foxControls = new FoxControls()
         this.time = this.experience.time
         this.debug = this.experience.debug
 
@@ -94,13 +95,14 @@ export default class Fox
 
     setPhysics()
     {
-        this.foxShape = new CANNON.Box(new CANNON.Vec3(0.2, 0.5, 0.2))
+        this.foxShape = new CANNON.Box(new CANNON.Vec3(0.4, 0.5, 1.4))
         this.foxBody = new CANNON.Body({
             mass: 0,
             material: this.physics.defaultMaterial
         })
         this.foxBody.addShape(this.foxShape, new CANNON.Vec3(0, 0.75, 0))
         this.foxBody.position.copy(this.model.position)
+        this.foxBody.quaternion.copy(this.model.quaternion)
         this.world.addBody(this.foxBody)
 
         this.objectsToUpdate.push({
@@ -110,13 +112,33 @@ export default class Fox
     }
 
     updatePosition(){
-        for(obj of this.objectsToUpdate){
-            
+        for(this.obj of this.objectsToUpdate){
+            this.obj.mesh.position.copy(this.obj.body.position)
+            this.obj.mesh.quaternion.copy(this.obj.body.quaternion)
         }
     }
 
     update()
     {
+        if(this.model){
+            this.updatePosition()
+        }
+
         this.animation.mixer.update(this.time.delta * 0.001)
+        this.foxControls.movement(this.foxBody)
+        
+        
+        if(this.foxControls.keyMap.w === true){
+            //this.animation.actions.current.stop()
+            console.log(this.foxControls.keyMap.w)
+            this.animation.actions.current = this.animation.actions.walking
+            this.animation.actions.current.play()
+        } 
+        
+        if (this.foxControls.keyMap.w === false){
+            //this.animation.actions.current.stop()
+            this.animation.actions.current = this.animation.actions.idle
+            this.animation.actions.current.play()
+        }
     }
 }

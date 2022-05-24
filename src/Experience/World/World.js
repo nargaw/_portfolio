@@ -1,7 +1,7 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
-import Fox from './Fox.js'
+import Fox from './Fox/Fox.js'
 import Portal from './Portal/Portal.js'
 import UnderConstruction from './UnderConstruction.js'
 

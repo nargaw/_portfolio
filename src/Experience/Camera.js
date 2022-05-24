@@ -37,7 +37,7 @@ export default class Camera
     update()
     {
         if(this.instance.position.y < 5){
-            //this.instance.position.y = 5
+            this.instance.position.y = 5
         }
         this.controls.update()
     }

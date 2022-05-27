@@ -127,16 +127,16 @@ export default class Fox
         this.animation.mixer.update(this.time.delta * 0.001)
         this.foxControls.movement(this.foxBody)
         
-        
+        console.log(this.foxControls.keyMap)
         if(this.foxControls.keyMap.w === true){
             //this.animation.actions.current.stop()
-            console.log(this.foxControls.keyMap.w)
+            
             this.animation.actions.current = this.animation.actions.walking
             this.animation.actions.current.play()
         } 
         
-        if (this.foxControls.keyMap.w === false){
-            //this.animation.actions.current.stop()
+        if (this.foxControls.keyMap === [' ']){
+            this.animation.actions.current.stop()
             this.animation.actions.current = this.animation.actions.idle
             this.animation.actions.current.play()
         }

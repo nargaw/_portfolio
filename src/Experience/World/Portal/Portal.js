@@ -36,7 +36,7 @@ export default class Portal
     setModel()
     {
         this.model = this.resource.scene
-        this.model.scale.set(4, 4, 4)
+        this.model.scale.set(3, 3, 3)
         this.scene.add(this.model)
         //console.log(this.model.children)
         this.model.traverse(() => {

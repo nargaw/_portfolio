@@ -125,20 +125,28 @@ export default class Fox
         }
 
         this.animation.mixer.update(this.time.delta * 0.001)
-        this.foxControls.movement(this.foxBody)
-        
-        console.log(this.foxControls.keyMap)
+        this.foxControls.movement(this.foxBody, this.animation)
+        //console.log(this.foxControls.keyMap)
+        // if(this.foxControls.keyMap === true){
+        //     console.log('true')
+        // }
         if(this.foxControls.keyMap.w === true){
             //this.animation.actions.current.stop()
-            
-            this.animation.actions.current = this.animation.actions.walking
-            this.animation.actions.current.play()
+            this.animation.play('walking')
+            // this.animation.actions.current = this.animation.actions.walking
+            // this.animation.actions.current.play()
         } 
-        
-        if (this.foxControls.keyMap === [' ']){
-            this.animation.actions.current.stop()
+
+        if(this.foxControls.keyMap.w === false){
+            console.log('here')
             this.animation.actions.current = this.animation.actions.idle
             this.animation.actions.current.play()
+        }
+        
+        if (this.foxControls.keyMap === [' ']){
+            //this.animation.actions.current.stop()
+            console.log('stopped')
+            
         }
     }
 }

@@ -24,7 +24,7 @@ export default class FoxControls extends Controls
         }
     }
 
-    backward(body)
+    backward(body, mesh)
     {
         if(this.keyMap['s'] || this.hoverMap['4'] || this.hoverTouch['4'] || this.keyMap['ArrowDown']){
             console.log('backward')
@@ -33,41 +33,35 @@ export default class FoxControls extends Controls
         }
     }
 
-    left(body)
+    left(body, mesh)
     {
         if(this.keyMap['a'] || this.hoverMap['1'] || this.hoverTouch['1']|| this.keyMap['ArrowLeft']){
             console.log('left')
-            //this.body.angularVelocity.y -= 0.1
+            mesh.rotation.y -= 0.005
+            body.position.z -= 0.001
+            body.quaternion.copy(mesh.quaternion)
             this.moving = true
         } 
     }
 
-    right(body)
+    right(body, mesh)
     {
         //console.log(body.position)
         if(this.keyMap['d'] || this.hoverMap['2'] || this.hoverTouch['2']|| this.keyMap['ArrowRight']){
             console.log('right')
-            this.rotationVel += 0.1
-            this.quaternion = new CANNON.Quaternion()
-            this.axisR = new CANNON.Vec3(0, 1, 0)
-            this.angle += Math.PI * 0.5
-            //this.angle += 0.1 * Math.PI
-            console.log(body.position)
-            this.quaternion.setFromAxisAngle(this.axisR, this.angle)
-            this.quaternion.normalize()
-            this.quaternion.vmult(this.rotationVel)
-            body.position.z += 0.001
-            body.quaternion.copy(this.quaternion)
+            mesh.rotation.y += 0.005
+            body.position.z -= 0.001
+            body.quaternion.copy(mesh.quaternion)
             this.moving = true
         }
     }
 
-    idle(body)
-    {
-        if(this.keyMap['']){
-            this.moving = false
-            console.log('idle')
-        }
-    }
+    // idle(body)
+    // {
+    //     if(this.keyMap['']){
+    //         this.moving = false
+    //         console.log('idle')
+    //     }
+    // }
 
 }

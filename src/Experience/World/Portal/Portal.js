@@ -61,7 +61,7 @@ export default class Portal
     {
         this.portalLightMaterial = new THREE.ShaderMaterial({
             uniforms: {
-                uTime: { value: 0 },
+                u_time: { value: 0 },
                 uColorStart: { value: new THREE.Color(0xffff3f) },
                 uColorEnd: { value: new THREE.Color(0x004b23) }
             }, 
@@ -75,7 +75,7 @@ export default class Portal
     update()
     {
         this.elapsedTime = this.clock.getElapsedTime()
-        this.portalLightMaterial.uniforms.uTime.value = this.elapsedTime
+        this.portalLightMaterial.uniforms.u_time.value = this.elapsedTime
         //console.log(this.time.elapsed)
         //console.log(this.portalLightMaterial.uniforms.uTime.value)
     }

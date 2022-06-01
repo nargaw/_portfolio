@@ -120,7 +120,7 @@ export default class Fox
 
     update()
     {
-        this.foxControls.forward(this.foxBody)
+        this.foxControls.forward(this.foxBody, this.animation)
         this.foxControls.backward(this.foxBody)
         this.foxControls.left(this.foxBody)
         this.foxControls.right(this.foxBody)

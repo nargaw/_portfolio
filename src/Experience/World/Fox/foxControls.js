@@ -1,6 +1,7 @@
 import Controls from "../../Utils/Controls";
 import Experience from "../../Experience";
 import * as THREE from 'three'
+import * as CANNON from 'cannon-es'
 
 export default class FoxControls extends Controls
 {
@@ -9,6 +10,8 @@ export default class FoxControls extends Controls
         super()
         this.experience = new Experience()    
         this.moving = false
+        this.rotationVel = 0
+        //this.animation.mixer = new THREE.AnimationMixer(this.model)
     }
 
     forward(body)
@@ -34,14 +37,27 @@ export default class FoxControls extends Controls
     {
         if(this.keyMap['a'] || this.hoverMap['1'] || this.hoverTouch['1']|| this.keyMap['ArrowLeft']){
             console.log('left')
+            //this.body.angularVelocity.y -= 0.1
             this.moving = true
         } 
     }
 
     right(body)
     {
+        //console.log(body.position)
         if(this.keyMap['d'] || this.hoverMap['2'] || this.hoverTouch['2']|| this.keyMap['ArrowRight']){
             console.log('right')
+            this.rotationVel += 0.1
+            this.quaternion = new CANNON.Quaternion()
+            this.axisR = new CANNON.Vec3(0, 1, 0)
+            this.angle += Math.PI * 0.5
+            //this.angle += 0.1 * Math.PI
+            console.log(body.position)
+            this.quaternion.setFromAxisAngle(this.axisR, this.angle)
+            this.quaternion.normalize()
+            this.quaternion.vmult(this.rotationVel)
+            body.position.z += 0.001
+            body.quaternion.copy(this.quaternion)
             this.moving = true
         }
     }

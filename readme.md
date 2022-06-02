@@ -1,3 +1,3 @@
 Portfolio Website
 
-nateargaw.io
+https://www.nateargaw.io

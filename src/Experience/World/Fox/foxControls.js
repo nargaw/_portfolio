@@ -5,20 +5,38 @@ import * as CANNON from 'cannon-es'
 
 export default class FoxControls extends Controls
 {
-    constructor()
+    constructor(mesh)
     {
         super()
-        this.experience = new Experience()    
+        this.experience = new Experience()
+        this.target = mesh
+
+        this.acceleration = new THREE.Vector3(1, 0.25, 50.0)
+        this.decceleration = new THREE.Vector3(-0.0005, -0.0001, -5.0)
+        this.velocity = new THREE.Vector3(0, 0, 0)
+
+        this.quaternion = new THREE.Quaternion()
+        this.axisAngle = new THREE.Vector3()
+        this.rotation = this.target.quaternion.clone()
+        this.acc = this.acceleration.clone()
         this.moving = false
-        this.rotationVel = 0
+
+        this.forward = new THREE.Vector3(0, 0, 1)
+        this.oldPosition = new THREE.Vector3(0, 0, 1)
+        
         //this.animation.mixer = new THREE.AnimationMixer(this.model)
     }
 
-    forward(body)
+    forward()
     {
         if(this.keyMap['w'] || this.hoverMap['3']  || this.hoverTouch['3']|| this.keyMap['ArrowUp']){
-            console.log('forward')
-            body.position.z -= 0.005
+            this.velocity.z += this.acc.z
+            this.oldPosition.copy(this.target.position)
+            this.forward.applyQuaternion(this.target.quaternion)
+            this.forward.normalize()
+            this.forward.multiplyScalar(this.velocity.z)
+            this.target.position.add(this.forward)
+            //console.log(mesh.position)
             // animation.play('walking')
             this.moving = true
         }
@@ -27,7 +45,7 @@ export default class FoxControls extends Controls
     backward(body, mesh)
     {
         if(this.keyMap['s'] || this.hoverMap['4'] || this.hoverTouch['4'] || this.keyMap['ArrowDown']){
-            console.log('backward')
+            //console.log('backward')
             body.position.z += 0.005
             this.moving = true
         }

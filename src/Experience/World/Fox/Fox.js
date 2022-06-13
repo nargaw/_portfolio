@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import Experience from '../../Experience.js'
 import * as CANNON from 'cannon-es'
 import FoxControls from './foxControls.js'
+import FoxAnimations from './FoxAnimation.js'
 
 export default class Fox
 {
@@ -12,11 +13,13 @@ export default class Fox
         this.physics = this.experience.physics
         this.world = this.physics.world
         this.resources = this.experience.resources
-        this.foxControls = new FoxControls()
+        
         this.time = this.experience.time
         this.debug = this.experience.debug
 
         this.objectsToUpdate= []
+
+        
 
         // Debug
         if(this.debug.active)
@@ -28,13 +31,15 @@ export default class Fox
         this.resource = this.resources.items.foxModel
 
         this.setModel()
-        this.setAnimation()
+        //this.setAnimation()
         this.setPhysics()
+        this.foxControls = new FoxControls(this.model)
     }
 
     setModel()
     {
         this.model = this.resource.scene
+        this.animations = new FoxAnimations(this.model)
         this.model.scale.set(0.02, 0.02, 0.02)
         this.model.rotation.set(0, Math.PI, 0)
         this.model.position.set(0, 0, 5)
@@ -49,47 +54,13 @@ export default class Fox
         })
     }
 
-    setAnimation()
+    setState()
     {
-        this.animation = {}
-        
-        // Mixer
-        this.animation.mixer = new THREE.AnimationMixer(this.model)
-        
-        // Actions
-        this.animation.actions = {}
-        
-        this.animation.actions.idle = this.animation.mixer.clipAction(this.resource.animations[0])
-        this.animation.actions.walking = this.animation.mixer.clipAction(this.resource.animations[1])
-        this.animation.actions.running = this.animation.mixer.clipAction(this.resource.animations[2])
-        
-        this.animation.actions.current = this.animation.actions.idle
-        this.animation.actions.current.play()
-
-        // Play the action
-        this.animation.play = (name) =>
-        {
-            const newAction = this.animation.actions[name]
-            const oldAction = this.animation.actions.current
-
-            newAction.reset()
-            newAction.play()
-            newAction.crossFadeFrom(oldAction, 1)
-
-            this.animation.actions.current = newAction
-        }
-
-        // Debug
-        if(this.debug.active)
-        {
-            const debugObject = {
-                playIdle: () => { this.animation.play('idle') },
-                playWalking: () => { this.animation.play('walking') },
-                playRunning: () => { this.animation.play('running') }
-            }
-            this.debugFolder.add(debugObject, 'playIdle')
-            this.debugFolder.add(debugObject, 'playWalking')
-            this.debugFolder.add(debugObject, 'playRunning')
+        this.currentState = state.walking
+        this.state = {
+            idle: this.animation.play('idle'),
+            walking: this.animation.play('walking'),
+            running: this.animiation.play('running')
         }
     }
 
@@ -120,40 +91,9 @@ export default class Fox
 
     update()
     {
-        this.foxControls.forward(this.foxBody, this.model)
-        this.foxControls.backward(this.foxBody, this.model)
-        this.foxControls.left(this.foxBody, this.model)
-        this.foxControls.right(this.foxBody, this.model)
-        //this.foxControls.idle(this.foxBody)
         if(this.model){
             this.updatePosition()
+            this.animations.update()
         }
-        //console.log(this.animation.actions.current)
-        this.animation.mixer.update(this.time.delta * 0.001)
-        //this.foxControls.movement(this.foxBody, this.animation)
-        //console.log(this.foxControls.keyMap)
-        // if(this.foxControls.keyMap === true){
-        //     console.log('true')
-        // }
-        if(this.foxControls.keyMap.w === true){
-            //this.animation.actions.current.stop()
-            //this.animation.play('walking')
-            this.animation.actions.current = this.animation.actions.walking
-            this.animation.actions.current.play()
-        } 
-
-        // if(this.foxControls.keyMap.w === false){
-        //     console.log('here')
-        //     //this.animation.mixer.clipAction(this.resource.animations[0]).play()
-        //     // this.animation.actions.current.stop()
-        //     this.animation.actions.current = this.animation.actions.idle
-        //     this.animation.actions.current.play()
-        // }
-        
-        // if (this.foxControls.movement(this.foxBody, this.animation)){
-        //     //this.animation.actions.current.stop()
-        //     console.log('stopped')
-            
-        // }
     }
 }

@@ -1,1 +1,2 @@
 6.1.22 - figured out how to rotate model and copy body from the model quaternion but when fox moves according to world coordinates 
+6.12.22 - new foxAnimation file to handle animations

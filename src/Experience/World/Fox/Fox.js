@@ -34,6 +34,7 @@ export default class Fox
         //this.setAnimation()
         this.setPhysics()
         this.foxControls = new FoxControls(this.model)
+        //console.log(this.foxControls)
     }
 
     setModel()
@@ -56,7 +57,7 @@ export default class Fox
 
     setState()
     {
-        this.currentState = state.walking
+        //this.currentState = state.walking
         this.state = {
             idle: this.animation.play('idle'),
             walking: this.animation.play('walking'),
@@ -89,11 +90,19 @@ export default class Fox
         }
     }
 
+    controls()
+    {
+        this.foxControls.forward()
+        this.foxControls.right()
+        this.foxControls.left()
+    }
+
     update()
     {
         if(this.model){
             this.updatePosition()
             this.animations.update()
+            this.controls()
         }
     }
 }

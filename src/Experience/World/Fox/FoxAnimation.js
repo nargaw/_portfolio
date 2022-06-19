@@ -10,7 +10,7 @@ export default class FoxAnimations{
         this.resources = this.experience.resources
         this.resource = this.resources.items.foxModel
         this.time = this.experience.time
-        console.log(mesh)
+        //console.log(mesh)
         this.model = mesh
         this.setAnimation()
         this.setState()
@@ -19,7 +19,7 @@ export default class FoxAnimations{
     setAnimation()
     {
         this.animation = {}
-        console.log(this.model)
+        //console.log(this.model)
         // Mixer
         this.animation.mixer = new THREE.AnimationMixer(this.model)
         
@@ -63,7 +63,7 @@ export default class FoxAnimations{
     setState()
     {
         this.currentState = this.animation.actions.current
-        console.log(this.currentState)
+        //console.log(this.currentState)
     }
 
     update()

@@ -95,6 +95,8 @@ export default class Fox
         this.foxControls.forward()
         this.foxControls.right()
         this.foxControls.left()
+        this.foxControls.idle()
+        this.foxControls.updateFox()
     }
 
     update()

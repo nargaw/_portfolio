@@ -5,3 +5,6 @@
     if forward = walk animation
     if forward + shift = run animation
     if idle = idle animation
+6.21.22
+    -character moves forward
+    goals: control movement, turn left and right, maintain quaternion and position

@@ -1,8 +1,9 @@
 import * as THREE from 'three'
 import Experience from '../../Experience.js'
 import * as CANNON from 'cannon-es'
-import FoxControls from './foxControls.js'
+import FoxControls from './FoxControls.js'
 import FoxAnimations from './FoxAnimation.js'
+import FoxChaseCam from './FoxChaseCam.js'
 
 export default class Fox
 {
@@ -16,7 +17,7 @@ export default class Fox
         
         this.time = this.experience.time
         this.debug = this.experience.debug
-
+        this.chaseCam = new FoxChaseCam()
         this.objectsToUpdate= []
 
         
@@ -35,6 +36,7 @@ export default class Fox
         this.setPhysics()
         this.foxControls = new FoxControls(this.model)
         //console.log(this.foxControls)
+        //this.foxAnimation = new FoxAnimations(this.model)
     }
 
     setModel()
@@ -105,6 +107,7 @@ export default class Fox
             this.updatePosition()
             this.animations.update()
             this.controls()
+            this.chaseCam.handleChaseCam(this.model)
         }
     }
 }

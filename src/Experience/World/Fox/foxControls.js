@@ -31,7 +31,7 @@ export default class FoxControls extends Controls
         if(this.keyMap['w'] || this.hoverMap['3']  || this.hoverTouch['3']|| this.keyMap['ArrowUp'])
         {
             console.log('moving forward')
-            this.velocity.z += this.acceleration.z
+            this.velocity.z += this.acceleration.z * this.time.elapsed * 0.01 
             
             this.forwardMovement.applyQuaternion(this.target.quaternion)
             this.forwardMovement.normalize()

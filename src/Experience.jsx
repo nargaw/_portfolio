@@ -2,16 +2,15 @@ import { Light } from "three"
 import Environment from "./Environment"
 import Lights from "./Lights"
 import TestObj from "./TestObj"
-import { Physics, Debug } from "@react-three/cannon"
+// import { Physics, Debug } from "@react-three/cannon"
+import { Physics } from "@react-three/rapier"
 
 export default function Experience()
 {
     return <>
-        <Physics>
-            {/* <Debug color="black" scale={1.1}> */}
-                <TestObj />
-                <Environment />        
-            {/* </Debug> */}
+        <Physics debug>
+            <TestObj />
+            <Environment />        
         </Physics>
         <Lights />
         

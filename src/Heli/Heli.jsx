@@ -9,7 +9,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from 'three';
 
 export default function Heli(props) {
-  const { nodes, materials } = useGLTF("./Models/Helicopter/heliMod5.glb");
+  const { nodes, materials } = useGLTF("./Models/Helicopter/heliMod7.glb");
 
   const rotorRef = useRef()
   const bladesRef = useRef()

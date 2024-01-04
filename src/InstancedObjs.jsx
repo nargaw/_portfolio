@@ -9,7 +9,7 @@ export default function InstancedObjs()
 
     return <>
 
-        {[...Array(50)].map((value, index) =>
+        {[...Array(20)].map((value, index) =>
             <RigidBody
                 key={index}
                 restitution={0.825}

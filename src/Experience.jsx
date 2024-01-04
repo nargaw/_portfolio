@@ -6,14 +6,16 @@ import TestObj from "./TestObj"
 import { Physics } from "@react-three/rapier"
 import Heli from "./Heli/Heli"
 import InstancedObjs from "./InstancedObjs"
+import TestBoxAirFoil from "./TestBoxAirfoil"
 
 export default function Experience()
 {
     return <>
         <Physics debug>
             {/* <TestObj /> */}
-            <InstancedObjs />
+            {/* <InstancedObjs /> */}
             <Environment /> 
+            {/* <TestBoxAirFoil /> */}
             <Heli />       
         </Physics>
         <Lights />

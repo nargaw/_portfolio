@@ -16,7 +16,7 @@ function Ground(){
     return (
         <RigidBody type={'fixed'}>
             <mesh ref={ground} position-y={-0.5} >
-                <boxGeometry args={[300, 1., 300]} />
+                <boxGeometry args={[1000, 1., 1000]} />
                 <meshStandardMaterial color="lightblue" />
             </mesh>
         </RigidBody>
@@ -27,7 +27,7 @@ function Ground(){
 export default function Environment(){
     return <>
         <Grid 
-            args={[300, 300]}
+            args={[1000, 1000]}
             sectionColor={"gray"}
             cellColor={"gray"}
             position={[0, 0.005, 0]}

@@ -17,7 +17,7 @@ export default function InstancedObjs()
                 colliders="cuboid"
                 position={[
                     (Math.random() - 0.5) * 1,
-                    15 * index,
+                    15 * index + 5,
                     (Math.random() - 0.5) +1
                 ]}
             >

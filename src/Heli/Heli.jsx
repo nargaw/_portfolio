@@ -17,6 +17,20 @@ export default function Heli(props) {
   const tailRotorRef = useRef()
   const tailRotorMesh = useRef()
   const fuselageRef = useRef()
+  const fuselageMeshRef = useRef()
+
+  const position = new THREE.Vector3()
+  const quaternion = new THREE.Quaternion()
+  const target = new THREE.Vector3(0, 0, 0)
+  const obj = new THREE.Object3D()
+
+  useFrame((state) => {
+    target.lerp(fuselageMeshRef.current.getWorldPosition(position), 0.02)
+    obj.quaternion.copy(fuselageMeshRef.current.getWorldQuaternion(quaternion), 0.02)
+    state.camera.lookAt(target)
+    // state.camera.quaternion.copy(obj.quaternion) 
+    // console.log(obj.quaternion)
+  })
 
   const [ speed ] = useState((10.5))
   const testMaterial = new THREE.MeshBasicMaterial({color: 0xff0000})
@@ -56,17 +70,18 @@ export default function Heli(props) {
 
   const testForce = () => {
     console.log('force applied')
-    rotorRef.current.applyImpulse({x: 0, y: 5, z: 0})
+    rotorRef.current.applyImpulse({x: 0, y: 500, z: 0})
   }
 
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])}>
+      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} mass={10.5} >
         {/* <RoundCuboidCollider position={[0, 1.5, -1.75]} args={[0.5, 1., 5.85, 0.5]}/> */}
         <CuboidCollider position={[0, 1.5, -1.75]} args={[1., 1.5, 5.8]}/>
         <mesh
-          
+          ref={fuselageMeshRef}
+          onClick={testForce}
           castShadow
           receiveShadow
           geometry={nodes.Fuselage.geometry}
@@ -130,7 +145,7 @@ export default function Heli(props) {
         material={materials.Paint}
         position={[0, 0, -1.15]}
       /> */}
-      <RigidBody  type="dynamic" colliders="hull" ref={rotorRef} collisionGroups={interactionGroups(0, [1])} restitution={0.8}>
+      <RigidBody  type="dynamic" colliders="hull" ref={rotorRef} collisionGroups={interactionGroups(0, [1])} restitution={0.8} gravityScale={0.0}>
         <mesh
           // onClick={testForce}
           castShadow
@@ -141,7 +156,7 @@ export default function Heli(props) {
         />
       </RigidBody>
       
-      <RigidBody type="kinamaticPosition" colliders="hull" ref={tailRotorRef}  collisionGroups={interactionGroups(0, [1])} >
+      <RigidBody type="kinamaticPosition" colliders="hull" ref={tailRotorRef}  collisionGroups={interactionGroups(0, [1])} gravityScale={0.0} >
         <mesh
           ref={tailRotorMesh}
           castShadow

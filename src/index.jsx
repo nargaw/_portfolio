@@ -9,11 +9,11 @@ console.log(root)
 root.render(
     <>
         <Canvas shadows camera={{fov: 50, position: [0, 1.5, 15]}} >
-            <OrbitControls 
+            {/* <OrbitControls 
                 maxDistance={30}
                 minDistance={5}
                 maxPolarAngle={Math.PI * 0.45}
-            />
+            /> */}
             <Experience />
         </Canvas>
     </>

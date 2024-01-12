@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience'
 import { OrbitControls } from '@react-three/drei'
+import { Leva } from 'leva'
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 console.log(root)
 root.render(
     <>
+        <Leva />
         <Canvas shadows camera={{fov: 50, position: [0, 1.5, 15]}} >
             {/* <OrbitControls 
                 maxDistance={30}

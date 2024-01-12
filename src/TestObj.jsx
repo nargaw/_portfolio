@@ -9,33 +9,13 @@ export default function TestObj()
     const box = useRef()
     const boxPhysicsRef = useRef()
 
-    // const {position_X, position_Y, position_Z } = useControls({
-    //     position_X: {
-    //         value: 0,
-    //         min: -50,
-    //         max: 50,
-    //         step: 0.1
-    //     },
-    //     position_Y: {
-    //         value: 4.5,
-    //         min: 1,
-    //         max: 50,
-    //         step: 0.1
-    //     },
-    //     position_Z: {
-    //         value: 15,
-    //         min: 5,
-    //         max: 50,
-    //         step: 0.1
-    //     }
-    // })
-
     const v = new THREE.Vector3()
     const birdsEyeView = new THREE.Vector3(0, 4.5, 15)
     const chaseCam = new THREE.Object3D()
     const chaseCamPivot = new THREE.Object3D()
     chaseCamPivot.position.copy(birdsEyeView)
     let pos = new THREE.Vector3()
+    let quat = new THREE.Quaternion()
 
 
     useThree((state) => {
@@ -45,9 +25,10 @@ export default function TestObj()
 
     useFrame((state) => {
         pos = (box.current.getWorldPosition(new THREE.Vector3()))
+        quat = box.current.getWorldQuaternion(new THREE.Quaternion())
         state.camera.lookAt(pos)
         chaseCam.position.copy(pos)
-        chaseCam.quaternion.copy(box.current.quaternion)
+        // chaseCam.position.copy(quat)
         chaseCamPivot.getWorldPosition(v)
         if(v.y < 1){
             v.y = 1
@@ -55,13 +36,11 @@ export default function TestObj()
         state.camera.position.lerpVectors(state.camera.position, v, 0.01)    
     })
 
-
     const applyForceBox = () => {
         boxPhysicsRef.current.wakeUp()
         boxPhysicsRef.current.applyImpulse({x: 0, y: 50, z: -60})
     }
     
-
     return(
         <>
             <RigidBody colliders={'cuboid'} restitution={1.5} ref={boxPhysicsRef}>

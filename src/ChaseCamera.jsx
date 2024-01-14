@@ -1,8 +1,9 @@
 import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
 
-export default function ChaseCamera(object)
+export default function ChaseCamera({object})
 {
+    const v = new THREE.Vector3()
     const birdsEyeView = new THREE.Vector3(0, 4.5, 15)
     const chaseCam = new THREE.Object3D()
     const chaseCamPivot = new THREE.Object3D()

@@ -10,11 +10,11 @@ export default function Experience()
 {
     return <>
         <Physics debug>
-            <TestObj />
+            {/* <TestObj /> */}
             {/* <InstancedObjs /> */}
             <Environment /> 
             {/* <TestBoxAirFoil /> */}
-            {/* <Heli />        */}
+            <Heli />       
         </Physics>
         <Lights />
         

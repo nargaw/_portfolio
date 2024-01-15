@@ -20,35 +20,6 @@ export default function Heli(props) {
   const fuselageRef = useRef()
   const fuselageMeshRef = useRef()
 
-  // const position = new THREE.Vector3()
-  // const quaternion = new THREE.Quaternion()
-  // const target = new THREE.Vector3(0, 0, 0)
-  // const obj = new THREE.Object3D()
-
-  // const birdsEyeView = new THREE.Vector3(0, 4.5, 15)
-  // const chaseCam = new THREE.Object3D()
-  // const chaseCamPivot = new THREE.Object3D()
-  // chaseCamPivot.position.copy(birdsEyeView)
-
-  // useThree((state) => {
-  //   console.log(state.scene)
-  //   chaseCam.add(chaseCamPivot)
-  //   state.scene.add(chaseCam)
-  // })
-
-  // useFrame((state) => {
-  //   // target.lerp(fuselageMeshRef.current.getWorldPosition(position), 0.02)
-  //   // obj.quaternion.copy(fuselageMeshRef.current.getWorldQuaternion(quaternion), 0.02)
-  //   state.camera.lookAt(fuselageMeshRef.current.position)
-  //   chaseCam.position.copy(fuselageMeshRef.current.position)
-  //   chaseCam.position.copy(fuselageMeshRef.current.quaternion)
-  //   chaseCamPivot.getWorldPosition(position)
-  //   state.camera.position.lerpVectors(state.camera.position, position, 0.1 )
-  //   chaseCam.position.copy(fuselageMeshRef.current.position)
-  //   // state.camera.quaternion.copy(obj.quaternion) 
-  //   // console.log(obj.quaternion)
-  // })
-
   const [ speed ] = useState((10.5))
   const testMaterial = new THREE.MeshBasicMaterial({color: 0xff0000})
   const glassMaterial = new THREE.MeshStandardMaterial({
@@ -76,7 +47,6 @@ export default function Heli(props) {
   rotation.setFromEuler(new THREE.Euler(time, 0, 0))
   tailRotorRef?.current.setNextKinematicRotation(rotation)
  })
-
 
   const tailRotorFuselageJoint = useFixedJoint(fuselageRef, tailRotorRef, [
     [0, 0, 0],

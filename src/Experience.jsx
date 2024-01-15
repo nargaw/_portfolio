@@ -9,7 +9,7 @@ import TestBoxAirFoil from "./TestBoxAirfoil"
 export default function Experience()
 {
     return <>
-        <Physics debug>
+        <Physics >
             {/* <TestObj /> */}
             {/* <InstancedObjs /> */}
             <Environment /> 

@@ -10,6 +10,7 @@ import { CuboidCollider, RigidBody, RoundCuboidCollider, interactionGroups, useF
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from 'three';
 import ChaseCamera from "../ChaseCamera";
+import { useKeyboardControls } from "@react-three/drei";
 
 export default function Heli(props) {
   const { nodes, materials } = useGLTF("./Models/Helicopter/heliMod7.glb");
@@ -39,13 +40,33 @@ export default function Heli(props) {
     [0, 1, 0]
  ])
 
- useFrame((state) => {
+ //controls
+ const [ subscribeKeys, getKeys ] = useKeyboardControls()
+
+ useFrame((state, delta) => {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
 
   const time = state.clock.getElapsedTime()
   const rotation = new THREE.Quaternion()
   rotation.setFromEuler(new THREE.Euler(time, 0, 0))
-  tailRotorRef?.current.setNextKinematicRotation(rotation)
+  tailRotorRef?.current?.setNextKinematicRotation(rotation)
+
+  //keys
+  const { forward, backward, leftward, rightward, upward, downward } = getKeys()
+  // console.log(forward)
+  let gravityScale = 1
+  if(upward){
+    fuselageRef.current.gravityScale = -0.1
+    fuselageRef.current.wakeUp()
+    console.log(fuselageRef.current.gravityScale)
+    console.log('up')
+  }
+  if(downward){
+    fuselageRef.current.gravityScale = 0.1
+    console.log('down')
+  }
+
+
  })
 
   const tailRotorFuselageJoint = useFixedJoint(fuselageRef, tailRotorRef, [
@@ -63,7 +84,7 @@ export default function Heli(props) {
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} mass={10.5} >
+      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1.} mass={10.5} >
         {/* <RoundCuboidCollider position={[0, 1.5, -1.75]} args={[0.5, 1., 5.85, 0.5]}/> */}
         <CuboidCollider position={[0, 1.5, -1.75]} args={[1., 1.5, 5.8]}/>
         <mesh

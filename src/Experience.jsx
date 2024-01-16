@@ -5,6 +5,7 @@ import { Physics } from "@react-three/rapier"
 import Heli from "./Heli/Heli"
 import InstancedObjs from "./InstancedObjs"
 import TestBoxAirFoil from "./TestBoxAirfoil"
+import Buildings from "./Buildings"
 
 export default function Experience()
 {
@@ -15,6 +16,7 @@ export default function Experience()
             <Environment /> 
             {/* <TestBoxAirFoil /> */}
             <Heli />       
+            <Buildings />
         </Physics>
         <Lights />
         

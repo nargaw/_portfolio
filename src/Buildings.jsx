@@ -15,7 +15,7 @@ export default function Buildings()
                 position: 
                 [
                     (Math.random() - 0.5) * 500, 
-                    10, 
+                    -(Math.random() -0.5) * 50, 
                     (Math.random() - 0.5) * 500 
                 ],
                 rotation: [0, 0, 0]
@@ -28,7 +28,7 @@ export default function Buildings()
     return <>
         <InstancedRigidBodies instances={instances} type="fixed">
             <instancedMesh ref={cubes} castShadow receiveShadow args={[null, null, cubesCount]}>
-                <boxGeometry args={[20, 20, 20]} />
+                <boxGeometry args={[20, 200, 20]} />
                 <meshStandardMaterial color="gray" />
             </instancedMesh>
         </InstancedRigidBodies>

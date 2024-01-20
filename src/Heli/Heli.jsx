@@ -45,21 +45,26 @@ export default function Heli(props) {
 
  useFrame((state, delta) => {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
-
+ 
   const time = state.clock.getElapsedTime()
+  tailRotorMesh.current.rotation.x = time * 2.
   const rotation = new THREE.Quaternion()
-  rotation.setFromEuler(new THREE.Euler(time, 0, 0))
+  rotation.setFromEuler(new THREE.Euler(time * 2., 0, 0))
   tailRotorRef?.current?.setNextKinematicRotation(rotation)
-
+  // tailRotorRef?.current?.addTorque({x: 0, y: 10, z: 0}, true)
   //keys
   const { forward, backward, leftward, rightward, upward, downward } = getKeys()
   // console.log(forward)
   let gravityScale = 1
   if(upward){
-    fuselageRef.current.gravityScale = -0.1
-    fuselageRef.current.wakeUp()
-    console.log(fuselageRef.current.gravityScale)
+    fuselageRef.current.applyImpulse({x: 0, y: 10, z: 0}, true)
+    // fuselageRef.current.gravityScale = 0
     console.log('up')
+  }
+
+  if(forward){
+    fuselageRef.current.applyImpulse({x:0, y:0, z: 10}, true)
+    console.log('forward')
   }
   if(downward){
     fuselageRef.current.gravityScale = 0.1
@@ -69,11 +74,13 @@ export default function Heli(props) {
 
  })
 
-  const tailRotorFuselageJoint = useFixedJoint(fuselageRef, tailRotorRef, [
+  const tailRotorFuselageJoint = useRevoluteJoint(fuselageRef, tailRotorRef, [
     [0, 0, 0],
-    [0, 0, 0, 1],
+    // Position of the joint in bodyB's local space
     [0, 0, 0],
-    [0, 0, 0, 1]
+    // Axis of the joint, expressed in the local-space of
+    // the rigid-bodies it is attached to. Cannot be [0,0,0].
+    [1, 0, 0]
   ])
 
   const testForce = () => {
@@ -143,6 +150,17 @@ export default function Heli(props) {
           material={materials.Paint}
           position={[1.05, 0.308, 1.341]}
         />
+        {/* <RigidBody type="dynamic" colliders="hull" ref={tailRotorRef}  collisionGroups={interactionGroups(0, [1])} gravityScale={0.0} position={[0.008, 1.361, -6.788]}> */}
+        <mesh
+          ref={tailRotorMesh}
+          castShadow
+          receiveShadow
+          geometry={nodes.TailRotorMast.geometry}
+          material={materials.Paint}
+          // material={testMaterial}
+          position={[0.008, 1.361, -6.788]}
+        />
+      {/* </RigidBody> */}
       </RigidBody>
       
       
@@ -164,17 +182,7 @@ export default function Heli(props) {
         />
       </RigidBody>
       
-      <RigidBody type="kinamaticPosition" colliders="hull" ref={tailRotorRef}  collisionGroups={interactionGroups(0, [1])} gravityScale={0.0} >
-        <mesh
-          ref={tailRotorMesh}
-          castShadow
-          receiveShadow
-          geometry={nodes.TailRotorMast.geometry}
-          material={materials.Paint}
-          // material={testMaterial}
-          position={[0.008, 1.361, -6.788]}
-        />
-      </RigidBody>
+      
       
       <ChaseCamera object={fuselageMeshRef}/>
     </group>

@@ -4,11 +4,12 @@ import { useFrame, useThree } from '@react-three/fiber'
 export default function ChaseCamera({object})
 {
     const v = new THREE.Vector3()
-    const birdsEyeView = new THREE.Vector3(0, 4.5, -15)
+    const birdsEyeView = new THREE.Vector3(10, 4.5, -15)
     const chaseCam = new THREE.Object3D()
     const chaseCamPivot = new THREE.Object3D()
     chaseCamPivot.position.copy(birdsEyeView)
     let pos = new THREE.Vector3()
+    let quat = new THREE.Quaternion()
 
     useThree((state) => {
         state.scene.add(chaseCam)
@@ -17,9 +18,11 @@ export default function ChaseCamera({object})
 
     useFrame((state) => {
         pos = (object.current.getWorldPosition(new THREE.Vector3()))
+        quat = (object.current.getWorldQuaternion(new THREE.Quaternion()))
         state.camera.lookAt(pos)
         chaseCam.position.copy(pos)
-        chaseCam.quaternion.copy(object.current.quaternion)
+        // chaseCam.quaternion.copy(object.current.quaternion)
+        chaseCamPivot.applyQuaternion(quat)
         chaseCamPivot.getWorldPosition(v)
         if(v.y < 1){
             v.y = 1

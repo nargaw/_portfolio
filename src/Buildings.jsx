@@ -29,7 +29,7 @@ export default function Buildings()
         <InstancedRigidBodies instances={instances} type="fixed">
             <instancedMesh ref={cubes} castShadow receiveShadow args={[null, null, cubesCount]}>
                 <boxGeometry args={[20, 200, 20]} />
-                <meshStandardMaterial color="gray" />
+                <meshNormalMaterial />
             </instancedMesh>
         </InstancedRigidBodies>
     

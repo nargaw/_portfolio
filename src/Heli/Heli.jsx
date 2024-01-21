@@ -11,6 +11,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from 'three';
 import ChaseCamera from "../ChaseCamera";
 import { useKeyboardControls } from "@react-three/drei";
+import { useRapier } from "@react-three/rapier";
 
 export default function Heli(props) {
   const { nodes, materials } = useGLTF("./Models/Helicopter/heliMod7.glb");
@@ -43,6 +44,10 @@ export default function Heli(props) {
  //controls
  const [ subscribeKeys, getKeys ] = useKeyboardControls()
 
+ //physics
+ const { world, setWorld, rapier } = useRapier()
+ console.log(world.gravity)
+
  useFrame((state, delta) => {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
  
@@ -54,12 +59,16 @@ export default function Heli(props) {
   // tailRotorRef?.current?.addTorque({x: 0, y: 10, z: 0}, true)
   //keys
   const { forward, backward, leftward, rightward, upward, downward } = getKeys()
-  // console.log(forward)
-  let gravityScale = 1
+  let pos = fuselageMeshRef.current.getWorldPosition(new THREE.Vector3())
+  // console.log(pos)
+  // if(pos.y > 5){
+  //   fuselageRef.current.applyImpulse({x: 0, y: -world.gravity, z: 0}, true)
+  // }
   if(upward){
     fuselageRef.current.applyImpulse({x: 0, y: 10, z: 0}, true)
+    // fuselageRef.current.applyForce({x: 0, y: -world.gravity, z: 0})
     // fuselageRef.current.gravityScale = 0
-    console.log('up')
+    // console.log('up')
   }
 
   if(forward){
@@ -88,10 +97,12 @@ export default function Heli(props) {
     rotorRef.current.applyImpulse({x: 0, y: 500, z: 0})
   }
 
+  
+
 
   return (
     <group {...props} dispose={null}>
-      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1.} mass={10.5} >
+      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} mass={10.5} >
         {/* <RoundCuboidCollider position={[0, 1.5, -1.75]} args={[0.5, 1., 5.85, 0.5]}/> */}
         <CuboidCollider position={[0, 1.5, -1.75]} args={[1., 1.5, 5.8]}/>
         <mesh

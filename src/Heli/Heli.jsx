@@ -52,10 +52,10 @@ export default function Heli(props) {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
  
   const time = state.clock.getElapsedTime()
-  tailRotorMesh.current.rotation.x = time * 2.
-  const rotation = new THREE.Quaternion()
-  rotation.setFromEuler(new THREE.Euler(time * 2., 0, 0))
-  tailRotorRef?.current?.setNextKinematicRotation(rotation)
+  tailRotorMesh.current.rotation.x = time * 4.
+  // const rotation = new THREE.Quaternion()
+  // rotation.setFromEuler(new THREE.Euler(time * 2., 0, 0))
+  // tailRotorRef?.current?.setNextKinematicRotation(rotation)
   // tailRotorRef?.current?.addTorque({x: 0, y: 10, z: 0}, true)
   //keys
   const { forward, backward, leftward, rightward, upward, downward } = getKeys()
@@ -64,20 +64,26 @@ export default function Heli(props) {
   // if(pos.y > 5){
   //   fuselageRef.current.applyImpulse({x: 0, y: -world.gravity, z: 0}, true)
   // }
+  if(pos.y > 5){
+    console.log('apply zero gravity')
+    fuselageRef.current.gravityScale = 0
+    fuselageRef.current.mass = 0
+    console.log(fuselageRef.current.gravityScale)
+  }
   if(upward){
     fuselageRef.current.applyImpulse({x: 0, y: 10, z: 0}, true)
-    // fuselageRef.current.applyForce({x: 0, y: -world.gravity, z: 0})
-    // fuselageRef.current.gravityScale = 0
-    // console.log('up')
+    
+  }
+
+ 
+  if(downward){
+    fuselageRef.current.gravityScale = 0.1
+    console.log('down')
   }
 
   if(forward){
     fuselageRef.current.applyImpulse({x:0, y:0, z: 10}, true)
     console.log('forward')
-  }
-  if(downward){
-    fuselageRef.current.gravityScale = 0.1
-    console.log('down')
   }
 
 
@@ -192,8 +198,6 @@ export default function Heli(props) {
           position={[0.007, 3.172, 0.001]}
         />
       </RigidBody>
-      
-      
       
       <ChaseCamera object={fuselageMeshRef}/>
     </group>

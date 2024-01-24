@@ -19,14 +19,13 @@ export default function ChaseCamera({object})
     useFrame((state) => {
         pos = (object.current.getWorldPosition(new THREE.Vector3()))
         quat = (object.current.getWorldQuaternion(new THREE.Quaternion()))
-        state.camera.lookAt(pos)
+        state.camera.lookAt(chaseCam.position)
+        chaseCam.quaternion.copy(quat)
         chaseCam.position.copy(pos)
-        // chaseCam.quaternion.copy(object.current.quaternion)
-        chaseCamPivot.applyQuaternion(quat)
         chaseCamPivot.getWorldPosition(v)
         if(v.y < 1){
             v.y = 1
         }
-        state.camera.position.lerpVectors(state.camera.position, v, 0.01)
+        state.camera.position.lerpVectors(state.camera.position, v, 0.05)
     })
 }

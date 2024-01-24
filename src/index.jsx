@@ -2,7 +2,7 @@ import './style.css'
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience'
-// import { OrbitControls } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import { Leva } from 'leva'
 import { KeyboardControls } from '@react-three/drei'
 
@@ -20,7 +20,7 @@ root.render(
             { name: 'downward', keys: [ 'ArrowRight', 'KeyE' ]  },
         ]}>
             <Canvas shadows camera={{fov: 50, position: [0, 1.5, -15]}} >
-                {/* <OrbitControls 
+                {/* <OrbitControls makeDefault
                     maxDistance={30}
                     minDistance={5}
                     maxPolarAngle={Math.PI * 0.45}

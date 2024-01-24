@@ -8,15 +8,18 @@ export default function Buildings()
     const cubesCount = 100
     const instances = useMemo(() => {
         const instances = []
-
         for(let i = 0; i < cubesCount; i++){
+            const angle = Math.random() * Math.PI * 2
+            const radius = 50 + Math.random() * 500
+            const x = Math.cos(angle) * radius
+            const z = Math.sin(angle) * radius
             instances.push({
                 key: 'instance_' + i,
                 position: 
                 [
-                    (Math.random() - 0.5) * 500, 
+                    x, 
                     -(Math.random() -0.5) * 50, 
-                    (Math.random() - 0.5) * 500 
+                    z 
                 ],
                 rotation: [0, 0, 0]
             })

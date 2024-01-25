@@ -10,12 +10,12 @@ import Buildings from "./Buildings"
 export default function Experience()
 {
     return <>
-        <Physics >
+        <Physics debug >
             {/* <TestObj /> */}
             {/* <InstancedObjs /> */}
             <Environment /> 
-            {/* <TestBoxAirFoil /> */}
-            <Heli />       
+            <TestBoxAirFoil />
+            {/* <Heli />        */}
             <Buildings />
         </Physics>
         <Lights />

@@ -5,17 +5,17 @@ by pjedvaj
 */
 
 import React, { useEffect, useRef, useState } from "react";
-import { useGLTF } from "@react-three/drei";
-import { CuboidCollider, RigidBody, RoundCuboidCollider, interactionGroups, useFixedJoint, useRevoluteJoint } from "@react-three/rapier";
+import { useGLTF, useKeyboardControls } from "@react-three/drei";
+import { CuboidCollider, RigidBody, interactionGroups, useRevoluteJoint, quat, vec3, euler, useRapier } from "@react-three/rapier";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from 'three';
 import ChaseCamera from "../ChaseCamera";
-import { useKeyboardControls } from "@react-three/drei";
-import { useRapier } from "@react-three/rapier";
+
 
 export default function Heli(props) {
   const { nodes, materials } = useGLTF("./Models/Helicopter/heliMod7.glb");
 
+  const heli = useRef()
   const rotorRef = useRef()
   const tailRotorRef = useRef()
   const tailRotorMesh = useRef()
@@ -32,57 +32,57 @@ export default function Heli(props) {
     opacity: 0.1
   })
   
- const rotorJoint = useRevoluteJoint(rotorRef, fuselageRef, [
-    [0, 0, 0],
-    // Position of the joint in bodyB's local space
-    [0, 0, 0],
-    // Axis of the joint, expressed in the local-space of
-    // the rigid-bodies it is attached to. Cannot be [0,0,0].
-    [0, 1, 0]
- ])
+  const rotorJoint = useRevoluteJoint(rotorRef, fuselageRef, [
+      [0, 0, 0],
+      // Position of the joint in bodyB's local space
+      [0, 0, 0],
+      // Axis of the joint, expressed in the local-space of
+      // the rigid-bodies it is attached to. Cannot be [0,0,0].
+      [0, 1, 0]
+  ])
 
  //controls
  const [ subscribeKeys, getKeys ] = useKeyboardControls()
 
  //physics
  const { world, setWorld, rapier } = useRapier()
- console.log(world.gravity)
+  //  console.log(world.gravity)
+
+ useEffect(() => {
+    if(fuselageRef.current){
+      const position = vec3(fuselageRef.current.translation())
+      const quaternion = quat(fuselageRef.current.rotation())
+      const eulerRot = euler().setFromQuaternion(
+        quat(fuselageRef.current.rotation())
+      )
+
+      fuselageRef.current.setTranslation(position, true)
+      fuselageRef.current.setRotation(quaternion, true)
+      fuselageRef.current.setAngvel({x: 0, y:2, z: 0}, true)
+    }
+ }, [])
 
  useFrame((state, delta) => {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
  
   const time = state.clock.getElapsedTime()
   tailRotorMesh.current.rotation.x = time * 4.
-  // const rotation = new THREE.Quaternion()
-  // rotation.setFromEuler(new THREE.Euler(time * 2., 0, 0))
-  // tailRotorRef?.current?.setNextKinematicRotation(rotation)
-  // tailRotorRef?.current?.addTorque({x: 0, y: 10, z: 0}, true)
-  //keys
+ 
   const { forward, backward, leftward, rightward, upward, downward } = getKeys()
-  let pos = fuselageMeshRef.current.getWorldPosition(new THREE.Vector3())
-  // console.log(pos)
-  // if(pos.y > 5){
-  //   fuselageRef.current.applyImpulse({x: 0, y: -world.gravity, z: 0}, true)
-  // }
-  if(pos.y > 5){
-    console.log('apply zero gravity')
-    fuselageRef.current.gravityScale = 0
-    fuselageRef.current.mass = 0
-    console.log(fuselageRef.current.gravityScale)
-  }
+ 
   if(upward){
-    fuselageRef.current.applyImpulse({x: 0, y: 10, z: 0}, true)
+    fuselageRef.current.applyImpulse({x: 0, y: 9.81, z: 0}, true)
     
   }
 
- 
   if(downward){
-    fuselageRef.current.gravityScale = 0.1
+    // fuselageRef.current.gravityScale = 0.1
     console.log('down')
   }
 
   if(forward){
-    fuselageRef.current.applyImpulse({x:0, y:0, z: 10}, true)
+    // fuselageRef.current.applyImpulse({x:0, y:0, z: 10}, true)
+    // heli.current.position.z += 0.1
     console.log('forward')
   }
 
@@ -103,12 +103,9 @@ export default function Heli(props) {
     rotorRef.current.applyImpulse({x: 0, y: 500, z: 0})
   }
 
-  
-
-
   return (
-    <group {...props} dispose={null}>
-      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} mass={10.5} >
+    <group ref={heli} {...props} dispose={null}>
+      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} mass={10} >
         {/* <RoundCuboidCollider position={[0, 1.5, -1.75]} args={[0.5, 1., 5.85, 0.5]}/> */}
         <CuboidCollider position={[0, 1.5, -1.75]} args={[1., 1.5, 5.8]}/>
         <mesh
@@ -188,7 +185,7 @@ export default function Heli(props) {
         material={materials.Paint}
         position={[0, 0, -1.15]}
       /> */}
-      <RigidBody  type="dynamic" colliders="hull" ref={rotorRef} collisionGroups={interactionGroups(0, [1])} restitution={0.8} gravityScale={0.0}>
+      <RigidBody  type="dynamic" colliders="hull" ref={rotorRef} collisionGroups={interactionGroups(0, [1])} restitution={0.8} gravityScale={1}>
         <mesh
           // onClick={testForce}
           castShadow
@@ -199,7 +196,7 @@ export default function Heli(props) {
         />
       </RigidBody>
       
-      <ChaseCamera object={fuselageMeshRef}/>
+      <ChaseCamera object={fuselageMeshRef} offsetView={new THREE.Vector3(0, 1, 12)}/>
     </group>
   );
 }

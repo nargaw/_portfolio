@@ -1,13 +1,12 @@
 import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
 
-export default function ChaseCamera({object})
+export default function ChaseCamera({object, offsetView})
 {
     const v = new THREE.Vector3()
-    const birdsEyeView = new THREE.Vector3(10, 4.5, -15)
     const chaseCam = new THREE.Object3D()
     const chaseCamPivot = new THREE.Object3D()
-    chaseCamPivot.position.copy(birdsEyeView)
+    chaseCamPivot.position.copy(offsetView)
     let pos = new THREE.Vector3()
     let quat = new THREE.Quaternion()
 

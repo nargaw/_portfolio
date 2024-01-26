@@ -10,6 +10,7 @@ import { CuboidCollider, RigidBody, interactionGroups, useRevoluteJoint, quat, v
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from 'three';
 import ChaseCamera from "../ChaseCamera";
+import { useControls } from "leva";
 
 
 export default function Heli(props) {
@@ -48,6 +49,18 @@ export default function Heli(props) {
  const { world, setWorld, rapier } = useRapier()
   //  console.log(world.gravity)
 
+  //camera controls
+  const { cameraView } = useControls({
+    cameraView: {
+      value: {
+        x: 10,
+        y: 3,
+        z: -20
+      },
+    
+    }
+  })
+
  useEffect(() => {
     if(fuselageRef.current){
       const position = vec3(fuselageRef.current.translation())
@@ -64,14 +77,29 @@ export default function Heli(props) {
 
  useFrame((state, delta) => {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
- 
+  // fuselageRef?.current?.setAngularDamping(0.1)
+  let position = new THREE.Vector3()
+  fuselageMeshRef.current.getWorldPosition(position)
+  // console.log(position.y)
+  if(position.y > 5){
+    fuselageRef.current.setGravityScale(0, true)
+    fuselageRef.current.resetForces(true)
+    fuselageRef.current.resetTorques(true)
+    fuselageRef.current.setAngularDamping(1)
+
+  }
   const time = state.clock.getElapsedTime()
   tailRotorMesh.current.rotation.x = time * 4.
- 
+  // console.log(fuselageMeshRef.current.position)
   const { forward, backward, leftward, rightward, upward, downward } = getKeys()
  
   if(upward){
-    fuselageRef.current.applyImpulse({x: 0, y: 9.81, z: 0}, true)
+    fuselageRef.current.applyImpulse({x: 0, y: 9.81 * 2. , z: 0}, true)
+    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: -1, y: 0, z: -1}, true)
+    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: 1, y: 0, z: -1}, true)
+    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: -1, y: 0, z: 1}, true)
+    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: 1, y: 0, z: 1}, true)
+    // fuselageRef.current.setAngularDamping(0.0)
     
   }
 
@@ -105,9 +133,9 @@ export default function Heli(props) {
 
   return (
     <group ref={heli} {...props} dispose={null}>
-      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} mass={10} >
+      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1}>
         {/* <RoundCuboidCollider position={[0, 1.5, -1.75]} args={[0.5, 1., 5.85, 0.5]}/> */}
-        <CuboidCollider position={[0, 1.5, -1.75]} args={[1., 1.5, 5.8]}/>
+        <CuboidCollider position={[0, 1.5, -1.75]} args={[3., 1.5, 5.8]}/>
         <mesh
           ref={fuselageMeshRef}
           onClick={testForce}
@@ -185,7 +213,7 @@ export default function Heli(props) {
         material={materials.Paint}
         position={[0, 0, -1.15]}
       /> */}
-      <RigidBody  type="dynamic" colliders="hull" ref={rotorRef} collisionGroups={interactionGroups(0, [1])} restitution={0.8} gravityScale={1}>
+      <RigidBody  type="dynamic" colliders="hull" ref={rotorRef} collisionGroups={interactionGroups(0, [1])} restitution={0.0} gravityScale={1}>
         <mesh
           // onClick={testForce}
           castShadow
@@ -196,7 +224,7 @@ export default function Heli(props) {
         />
       </RigidBody>
       
-      <ChaseCamera object={fuselageMeshRef} offsetView={new THREE.Vector3(0, 1, 12)}/>
+      <ChaseCamera object={fuselageMeshRef} offsetView={new THREE.Vector3(cameraView.x, cameraView.y, cameraView.z)}/>
     </group>
   );
 }

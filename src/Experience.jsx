@@ -14,8 +14,8 @@ export default function Experience()
             {/* <TestObj /> */}
             {/* <InstancedObjs /> */}
             <Environment /> 
-            <TestBoxAirFoil />
-            {/* <Heli />        */}
+            {/* <TestBoxAirFoil /> */}
+            <Heli />       
             <Buildings />
         </Physics>
         <Lights />

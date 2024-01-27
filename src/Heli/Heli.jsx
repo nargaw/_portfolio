@@ -79,32 +79,47 @@ export default function Heli(props) {
   rotorJoint?.current?.configureMotorVelocity(10, 2)
   // fuselageRef?.current?.setAngularDamping(0.1)
   let position = new THREE.Vector3()
+  let quaternion = new THREE.Quaternion()
   fuselageMeshRef.current.getWorldPosition(position)
+  fuselageMeshRef.current.getWorldQuaternion(quaternion)
+  console.log(quaternion)
   // console.log(position.y)
   if(position.y > 5){
     fuselageRef.current.setGravityScale(0, true)
     fuselageRef.current.resetForces(true)
     fuselageRef.current.resetTorques(true)
     fuselageRef.current.setAngularDamping(1)
+    fuselageRef.current.setLinearDamping(1)
+    fuselageRef.current.setEnabledRotations(false, false, false, true)
 
+    if(quaternion.x < -0.1){
+      fuselageRef.current.addForce({x: 0.01, y: 0, z: 0}, true)
+    }
+    if(quaternion.x > 0.1){
+      fuselageRef.current.addForce({x: -0.01, y: 0, z: 0}, true)
+    }
+    if(quaternion.z < -0.1){
+      fuselageRef.current.addForce({x: 0.0, y: 0, z: 0.01}, true)
+    }
+    if(quaternion.z > 0.1){
+      fuselageRef.current.addForce({x: 0.0, y: 0, z: -0.01}, true)
+    }
+    // console.log(fuselageRef.current)
   }
+
+  
   const time = state.clock.getElapsedTime()
   tailRotorMesh.current.rotation.x = time * 4.
   // console.log(fuselageMeshRef.current.position)
   const { forward, backward, leftward, rightward, upward, downward } = getKeys()
  
   if(upward){
-    fuselageRef.current.applyImpulse({x: 0, y: 9.81 * 2. , z: 0}, true)
-    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: -1, y: 0, z: -1}, true)
-    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: 1, y: 0, z: -1}, true)
-    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: -1, y: 0, z: 1}, true)
-    // fuselageRef.current.applyImpulseAtPoint({x: 0, y: 5, z: 0}, {x: 1, y: 0, z: 1}, true)
-    // fuselageRef.current.setAngularDamping(0.0)
-    
+    fuselageRef.current.applyImpulse({x: 0, y: 9.81 * 2. , z: 0}, true)  
   }
 
   if(downward){
     // fuselageRef.current.gravityScale = 0.1
+    fuselageRef.current.applyImpulse({x: 0, y: -9.81 , z: 0}, true)
     console.log('down')
   }
 
@@ -128,17 +143,21 @@ export default function Heli(props) {
 
   const testForce = () => {
     console.log('force applied')
-    rotorRef.current.applyImpulse({x: 0, y: 500, z: 0})
+    rotorRef.current.applyImpulseAtPoint({x: 0, y: 5., z: 0.}, {x: 0, y: 1.5, z: 10}, true)
+    rotorRef.current.applyImpulseAtPoint({x: 0, y: 5., z: 0.}, {x: 0, y: 1.5, z: -10}, true)
+    rotorRef.current.applyImpulseAtPoint({x: 0, y: 5., z: 0.}, {x: 10, y: 1.5, z: 10}, true)
+    rotorRef.current.applyImpulseAtPoint({x: 0, y: 5., z: 0.}, {x: -10, y: 1.5, z: -10}, true)
+    // rotorRef.current.applyImpulse({x:0, y:500, z:0}, true)
   }
 
   return (
     <group ref={heli} {...props} dispose={null}>
-      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1}>
+      <RigidBody type={"dyanmic"} colliders={false} ref={fuselageRef} collisionGroups={interactionGroups(0, [1])} gravityScale={1} >
         {/* <RoundCuboidCollider position={[0, 1.5, -1.75]} args={[0.5, 1., 5.85, 0.5]}/> */}
         <CuboidCollider position={[0, 1.5, -1.75]} args={[3., 1.5, 5.8]}/>
         <mesh
           ref={fuselageMeshRef}
-          onClick={testForce}
+          // onClick={testForce}
           castShadow
           receiveShadow
           geometry={nodes.Fuselage.geometry}

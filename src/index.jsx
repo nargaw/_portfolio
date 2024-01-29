@@ -11,22 +11,8 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 root.render(
     <>
         <Leva />
-        <KeyboardControls map={[
-            { name: 'forward', keys: [ 'ArrowUp', 'KeyW' ] },
-            { name: 'backward', keys: [ 'ArrowDown', 'KeyS' ] },
-            { name: 'leftward', keys: [ 'ArrowLeft', 'KeyA' ] },
-            { name: 'rightward', keys: [ 'ArrowRight', 'KeyD' ] },
-            { name: 'upward', keys: [ 'ArrowRight', 'KeyQ' ]  },
-            { name: 'downward', keys: [ 'ArrowRight', 'KeyE' ]  },
-        ]}>
-            <Canvas shadows camera={{fov: 50, position: [0, 1.5, -15]}} >
-                {/* <OrbitControls makeDefault
-                    maxDistance={30}
-                    minDistance={5}
-                    maxPolarAngle={Math.PI * 0.45}
-                /> */}
-                <Experience />
-            </Canvas>
-        </KeyboardControls>
+        <Canvas>
+            <Experience />
+        </Canvas>
     </>
 )

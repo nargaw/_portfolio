@@ -10,10 +10,10 @@ export default function Shader()
 {
 
     const planetUniforms = useControls("Planet Variables", {
-        color1: '#56ff00',
-        color2: '#026689',
+        color1: '#4c6ad9',
+        color2: '#485096',
         planetVal: {
-            value: 4.5,
+            value: 4.11,
             min: 2.0,
             max: 5.0,
             step: 0.01
@@ -29,7 +29,7 @@ export default function Shader()
             u_color1: { value: new Color(planetUniforms.color1)},
             u_color2: { value: new Color(planetUniforms.color2)},
             u_planetVal: { value: planetUniforms.planetVal}
-        })
+        }), []
     )
 
     // window.addEventListener('resize', () => {
@@ -48,6 +48,9 @@ export default function Shader()
         const { clock } = state
         mesh.current.material.uniforms.u_time.value = clock.getElapsedTime() - currentTime
         mesh.current.material.uniforms.u_mouse.value = new Vector2(mouseX, mouseY)
+        mesh.current.material.uniforms.u_color1.value = new Color(planetUniforms.color1)
+        mesh.current.material.uniforms.u_color2.value = new Color(planetUniforms.color2)
+        mesh.current.material.uniforms.u_planetVal.value = planetUniforms.planetVal
     })
 
     addEventListener('mousemove', (e) => {

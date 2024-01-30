@@ -257,12 +257,12 @@ uniform float u_planetVal;
 
     vec3 DrawPlanet(vec2 pixelCoords, vec3 color)
     {
-        float d = sdfCircle(pixelCoords, 400.);
+        float d = sdfCircle(pixelCoords, 200.);
         vec3 planetColor = vec3(1.);
 
         if (d <= 0.0) {
-            float x = pixelCoords.x / 400.0;
-            float y = pixelCoords.y / 400.0;
+            float x = pixelCoords.x / 200.0;
+            float y = pixelCoords.y / 200.0;
             float z = sqrt(1. - x * x - y * y );
             mat3 planetRotation = rotateY(u_time * 0.1);
             vec3 viewNormal = vec3(x, y, z);

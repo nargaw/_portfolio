@@ -1,7 +1,7 @@
-void main() {
-  vec4 modelPosition = modelMatrix * vec4(position, 1.0);
-  vec4 viewPosition = viewMatrix * modelPosition;
-  vec4 projectedPosition = projectionMatrix * viewPosition;
+varying vec2 vUv;
 
-  gl_Position = projectedPosition;
+void main() {
+  vUv = uv;
+  vec3 localSpacePosition = position;
+  gl_Position = vec4(localSpacePosition, 1.);
 }

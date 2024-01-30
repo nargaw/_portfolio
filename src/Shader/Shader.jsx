@@ -3,32 +3,29 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { OrbitControls } from "@react-three/drei"
 import fragmentShader from './fragment.glsl'
 import vertexShader from './vertex.glsl'
-import { Vector2, Color } from "three"
+import { Vector2, Color, DoubleSide } from "three"
 import { useControls } from "leva"
 
 export default function Shader()
 {
 
-    const planetUniforms = useControls("Planet Variables", {
-        color1: '#4c6ad9',
-        color2: '#485096',
-        planetVal: {
-            value: 4.11,
-            min: 2.0,
-            max: 5.0,
-            step: 0.01
-        }
-    })
+    // const planetUniforms = useControls("Planet Variables", {
+    //     color1: '#4c6ad9',
+    //     color2: '#485096',
+    //     planetVal: {
+    //         value: 4.11,
+    //         min: 2.0,
+    //         max: 5.0,
+    //         step: 0.01
+    //     }
+    // })
 
     const mesh = useRef()
     const uniforms = useMemo(
         () => ({
             u_time: { value: 0.},
             u_mouse: { value: new Vector2()},
-            u_resolution: { value: new Vector2(window.innerWidth, window.innerHeight)},
-            u_color1: { value: new Color(planetUniforms.color1)},
-            u_color2: { value: new Color(planetUniforms.color2)},
-            u_planetVal: { value: planetUniforms.planetVal}
+            u_resolution: { value: new Vector2(window.innerWidth, window.innerHeight)}
         }), []
     )
 
@@ -48,9 +45,6 @@ export default function Shader()
         const { clock } = state
         mesh.current.material.uniforms.u_time.value = clock.getElapsedTime() - currentTime
         mesh.current.material.uniforms.u_mouse.value = new Vector2(mouseX, mouseY)
-        mesh.current.material.uniforms.u_color1.value = new Color(planetUniforms.color1)
-        mesh.current.material.uniforms.u_color2.value = new Color(planetUniforms.color2)
-        mesh.current.material.uniforms.u_planetVal.value = planetUniforms.planetVal
     })
 
     addEventListener('mousemove', (e) => {
@@ -67,16 +61,17 @@ export default function Shader()
 
     return <>
         <OrbitControls 
-                enablePan = {false}
-                maxAzimuthAngle={Math.PI * 0.5}
-                minAzimuthAngle={-Math.PI * 0.5}
-                maxPolarAngle={Math.PI * 0.5 } 
-                minPolarAngle={-Math.PI * 0.5 }           
+                // enablePan = {false}
+                // maxAzimuthAngle={Math.PI * 0.5}
+                // minAzimuthAngle={-Math.PI * 0.5}
+                // maxPolarAngle={Math.PI * 0.5 } 
+                // minPolarAngle={-Math.PI * 0.5 }           
             />
-        <mesh ref={mesh}>
-            {/* <icosahedronGeometry args={[1, 128]} /> */}
-            <planeGeometry args={[2, 2]} />
-            <shaderMaterial 
+        <mesh ref={mesh} position={[0, 0, 0]}>
+            <icosahedronGeometry args={[150, 128]} />
+            {/* <planeGeometry args={[200, 200]} /> */}
+            <shaderMaterial
+                side={DoubleSide} 
                 fragmentShader={fragmentShader}
                 vertexShader={vertexShader}
                 uniforms={uniforms}

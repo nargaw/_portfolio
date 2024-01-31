@@ -1,15 +1,13 @@
-import { InstancedRigidBodies, RigidBody, useRapier } from "@react-three/rapier"
+import { CuboidCollider, InstancedRigidBodies, RigidBody, useRapier,  } from "@react-three/rapier"
 import { useMemo, useRef, useEffect } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Vector2, Vector3, Raycaster, MeshBasicMaterial } from "three"
+import { Vector2, Vector3, Raycaster, MeshBasicMaterial, TextureLoader } from "three"
+
 
 export default function About()
 {
-
+    const [map] = useLoader(THREE.TextureLoader, [mapUrl])
     const raycaster = new Raycaster()
-    const { rapier, world } = useRapier()
-    // console.log(world)
-
     const cubes = useRef()
     const rigidBodies = useRef()
     const cubesCount = 300
@@ -45,39 +43,30 @@ export default function About()
         pointer.x = (e.clientX / window.innerWidth) * 2 - 1
         pointer.y = -(e.clientY / window.innerHeight) * 2 + 1
     })
+
+    let camera
+   
+    useFrame((state) => {
+        camera = state.camera
+    })
     
-    // let current 
 
-    // useEffect(() => {
-    //     if(!rigidBodies.current){
-    //         return
-    //     }
-    //         rigidBodies.current[current].applyImpulse({
-    //             x: Math.random(),
-    //             y: Math.random(),
-    //             z: Math.random()
-    //         })
-    // }, []);
+    window.addEventListener('click', () => {
+        if(camera){
+            raycaster.setFromCamera(pointer, camera)
+            console.log(raycaster?.direction)
+            const intersect = raycaster.intersectObject(cubes.current)
+            console.log(intersect)
+            if (intersect.length > 0){
+                const instanceId = intersect[0].instanceId
+                console.log(instanceId)
 
+            rigidBodies?.current[instanceId]?.applyImpulse({x: Math.random(), y: 2.5, z: Math.random()}, true)
+            }
+        }
+    })
 
-
-    // useFrame((state) => {
-    //     // console.log(state.camera.position)
-    //     raycaster.setFromCamera(pointer, state.camera)
-    //     const intersection = raycaster.intersectObject(cubes.current)
-    //     // console.log(intersection)
-    //     if (intersection.length > 1){
-    //         const instanceId = intersection[0].instanceId
-    //         console.log(instanceId)
-    //         current = instanceId
-    //     }
-    // })
-    // window.addEventListener('click', (e) =>{
-        
-    //     const ray = raycaster.setFromCamera(pointer, camera)
-    //     console.log(ray)
-    //     console.log(camera)
-    // })
+   
   
     return <>
         <InstancedRigidBodies 
@@ -85,14 +74,19 @@ export default function About()
             type="dynamic"
             gravityScale={0}
             ref={rigidBodies}
-            
+            colliderNodes={[
+                <CuboidCollider args={[0.5, 0.5, 0.5]}/>
+            ]}
+            canSleep={false}
         >
+            
             <instancedMesh 
                 ref={cubes}
                 args={[null, null, cubesCount]}
             >
-                <boxGeometry />
+                <boxGeometry args={[1]}/>
                 <meshNormalMaterial />
+                {/* <meshMatcapMaterial map={}/> */}
             </instancedMesh>
         </InstancedRigidBodies>
     </>

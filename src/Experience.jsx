@@ -6,8 +6,8 @@ import { OrbitControls } from "@react-three/drei"
 export default function Experience()
 {
     return <>
-        <OrbitControls />
-        <Shader />
+        <OrbitControls makeDefault={false}/>
+        {/* <Shader /> */}
         <Physics debug>
             <About />
         </Physics>

@@ -1,12 +1,14 @@
 import { CuboidCollider, InstancedRigidBodies, RigidBody, useRapier,  } from "@react-three/rapier"
 import { useMemo, useRef, useEffect } from "react"
-import { useFrame, useThree } from "@react-three/fiber"
+import { useFrame, useThree, useLoader } from "@react-three/fiber"
 import { Vector2, Vector3, Raycaster, MeshBasicMaterial, TextureLoader } from "three"
+import { useMatcapTexture } from "@react-three/drei"
 
 
 export default function About()
 {
-    const [map] = useLoader(THREE.TextureLoader, [mapUrl])
+    const [matcap] = new useMatcapTexture('C8D1DC_575B62_818892_6E747B')
+    // const matcap = loader.load('./Matcaps/matcapice.png')
     const raycaster = new Raycaster()
     const cubes = useRef()
     const rigidBodies = useRef()
@@ -54,7 +56,6 @@ export default function About()
     window.addEventListener('click', () => {
         if(camera){
             raycaster.setFromCamera(pointer, camera)
-            console.log(raycaster?.direction)
             const intersect = raycaster.intersectObject(cubes.current)
             console.log(intersect)
             if (intersect.length > 0){
@@ -74,9 +75,10 @@ export default function About()
             type="dynamic"
             gravityScale={0}
             ref={rigidBodies}
-            colliderNodes={[
-                <CuboidCollider args={[0.5, 0.5, 0.5]}/>
-            ]}
+            // colliders="ball"
+            // colliderNodes={[
+            //     <CuboidCollider args={[0.5, 0.5, 0.5]}/>
+            // ]}
             canSleep={false}
         >
             
@@ -84,9 +86,10 @@ export default function About()
                 ref={cubes}
                 args={[null, null, cubesCount]}
             >
+                {/* <sphereGeometry /> */}
                 <boxGeometry args={[1]}/>
-                <meshNormalMaterial />
-                {/* <meshMatcapMaterial map={}/> */}
+                {/* <meshNormalMaterial /> */}
+                <meshMatcapMaterial matcap={matcap}/>
             </instancedMesh>
         </InstancedRigidBodies>
     </>

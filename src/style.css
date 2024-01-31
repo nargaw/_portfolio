@@ -9,7 +9,7 @@ body,
     height: 100%;
     overflow: hidden;
     background-color: #020202;
-    touch-action: none;
+    /* touch-action: none; */
 }
 
 ::-webkit-scrollbar {

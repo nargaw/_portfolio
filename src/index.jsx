@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(document.querySelector('#root'))
 root.render(
     <>
         <Leva />
-        <Canvas  camera={{fov: 75, position:[0, 0, 60]}}>
+        <Canvas  camera={{fov: 50, position:[0, 0, 100]}}>
             <Experience />
         </Canvas>
     </>

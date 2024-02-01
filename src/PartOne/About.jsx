@@ -56,15 +56,15 @@ export default function About()
                 args={[null, null, cubesCount]}
                 dispose={null}
                 onClick={(e) => {
-                    e.stopPropagation()
                     console.log('here')
                     console.log(e.instanceId)
                     // rigidBodies?.current[e.instanceId].rese
                     rigidBodies?.current[e.instanceId].applyImpulse({
                         x: Math.random() * 500,
                         y: Math.random() * 500,
-                        z: Math.random() * 500
+                        z: Math.random() * -5000
                     }, true)
+                    e.stopPropagation()
                 }}
             >
                 {/* <sphereGeometry /> */}

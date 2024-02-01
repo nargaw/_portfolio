@@ -23,7 +23,11 @@ export default function EnclosedBox()
             <mesh position={[0, 0, -25]} >
                 <boxGeometry args={[50, 50, 1]}/>
                 <meshNormalMaterial />    
-            </mesh>          
+            </mesh>
+            <mesh position={[0, 0, 25]} >
+                <boxGeometry args={[50, 50, 1]}/>
+                <meshNormalMaterial transparent={true} opacity={0} />    
+            </mesh>              
         </RigidBody>    
     </>
 }

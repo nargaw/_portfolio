@@ -11,13 +11,13 @@ export default function About()
     const rigidBodies = useRef()
     const cubesCount = 30
     const instances = useMemo(() => {
-        const instances = []
+        const objects = []
         for(let i = 0; i < cubesCount; i++){
             const angle = Math.random() * Math.PI * 2
             const radius = 2 + Math.random() * 20
             const x = Math.cos(angle) * radius
             const z = Math.sin(angle) * radius 
-            instances.push({
+            objects.push({
                 key: 'instance_' + i,
                 position: 
                 [
@@ -34,14 +34,16 @@ export default function About()
             })
         }
 
-        return instances
+        return objects
     }, [])
+
+    console.log(cubes.current)
  
     return <>
         <InstancedRigidBodies 
             instances={instances} 
             type="dynamic"
-            // restitution={0.6}
+            restitution={0.6}
             // friction={0.5}
             gravityScale={0}
             colliders="cuboid"
@@ -54,18 +56,19 @@ export default function About()
                 args={[null, null, cubesCount]}
                 dispose={null}
                 onClick={(e) => {
+                    e.stopPropagation()
                     console.log('here')
                     console.log(e.instanceId)
                     // rigidBodies?.current[e.instanceId].rese
                     rigidBodies?.current[e.instanceId].applyImpulse({
-                        x: Math.random() * 15,
-                        y: Math.random() * 15,
-                        z: Math.random() * 15
+                        x: Math.random() * 500,
+                        y: Math.random() * 500,
+                        z: Math.random() * 500
                     }, true)
                 }}
             >
                 {/* <sphereGeometry /> */}
-                <boxGeometry args={[2, 7, 2]}/>
+                <boxGeometry args={[5, 5, 5]}/>
                 <meshNormalMaterial />
                 {/* <meshMatcapMaterial matcap={matcap}/> */}
             </instancedMesh>

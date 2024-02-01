@@ -60,16 +60,10 @@ export default function Shader()
     }, {passive: false})
 
     return <>
-        <OrbitControls 
-                // enablePan = {false}
-                // maxAzimuthAngle={Math.PI * 0.5}
-                // minAzimuthAngle={-Math.PI * 0.5}
-                // maxPolarAngle={Math.PI * 0.5 } 
-                // minPolarAngle={-Math.PI * 0.5 }           
-            />
-        <mesh ref={mesh} position={[0, 0, 0]}>
-            <icosahedronGeometry args={[150, 128]} />
-            {/* <planeGeometry args={[200, 200]} /> */}
+    
+        <mesh ref={mesh} position={[0, 0, -30]}>
+            {/* <icosahedronGeometry args={[150, 128]} /> */}
+            <planeGeometry args={[300, 300]} />
             <shaderMaterial
                 side={DoubleSide} 
                 fragmentShader={fragmentShader}

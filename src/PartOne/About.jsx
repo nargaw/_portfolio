@@ -48,24 +48,25 @@ export default function About()
             gravityScale={0}
             colliders="cuboid"
             ref={rigidBodies}
-            canSleep={true}
+            //canSleep={true}
         >
             
             <instancedMesh 
                 ref={cubes}
                 args={[null, null, cubesCount]}
                 dispose={null}
-                onClick={(e) => {
-                    console.log('here')
-                    console.log(e.instanceId)
-                    // rigidBodies?.current[e.instanceId].rese
-                    rigidBodies?.current[e.instanceId].applyImpulse({
-                        x: Math.random() * 500,
-                        y: Math.random() * 500,
-                        z: Math.random() * -5000
-                    }, true)
-                    e.stopPropagation()
-                }}
+                onPointerOver={(e) => {
+                    e.stopPropagation();
+                    console.log(e.instanceId);
+                    rigidBodies.current[e.instanceId].applyImpulse(
+                      {
+                        x: Math.random() * 1500,
+                        y: Math.random() * 1500,
+                        z: Math.random() * 1500,
+                      },
+                      true
+                    );
+                  }}
             >
                 {/* <sphereGeometry /> */}
                 <boxGeometry args={[5, 5, 5]}/>

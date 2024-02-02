@@ -8,8 +8,8 @@ export default function Experience()
 {
     return <>
         {/* <OrbitControls makeDefault={false}/> */}
-        <Shader />
-        <Physics>
+        {/* <Shader /> */}
+        <Physics debug>
             <EnclosedBox />
             <About />
         </Physics>

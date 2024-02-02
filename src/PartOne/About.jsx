@@ -1,7 +1,7 @@
 import { CuboidCollider, InstancedRigidBodies, RigidBody, useRapier,  } from "@react-three/rapier"
 import { useMemo, useRef, useEffect } from "react"
 import { useFrame, useThree, useLoader } from "@react-three/fiber"
-import { Vector2, Vector3, Raycaster, MeshBasicMaterial, TextureLoader } from "three"
+import { Vector2, Vector3, Raycaster, MeshBasicMaterial, TextureLoader, DoubleSide } from "three"
 import { useMatcapTexture } from "@react-three/drei"
 
 
@@ -37,7 +37,18 @@ export default function About()
         return objects
     }, [])
 
-    console.log(cubes.current)
+    const handleClickInstance = (event) => {
+        // console.log(cubes.current)
+        // console.log(rigidBodies.current)
+        console.log(event.instanceId)
+        if(rigidBodies.current){
+            rigidBodies.current.at(event.instanceId).applyImpulse({
+                x: 0,
+                y: 0,
+                z: Math.random() - 0.5 * 20000,
+            }, true)
+        }
+    }
  
     return <>
         <InstancedRigidBodies 
@@ -48,29 +59,18 @@ export default function About()
             gravityScale={0}
             colliders="cuboid"
             ref={rigidBodies}
-            //canSleep={true}
+            canSleep={false}
         >
             
             <instancedMesh 
                 ref={cubes}
                 args={[null, null, cubesCount]}
                 dispose={null}
-                onPointerOver={(e) => {
-                    e.stopPropagation();
-                    console.log(e.instanceId);
-                    rigidBodies.current[e.instanceId].applyImpulse(
-                      {
-                        x: Math.random() * 1500,
-                        y: Math.random() * 1500,
-                        z: Math.random() * 1500,
-                      },
-                      true
-                    );
-                  }}
+                onClick={handleClickInstance}
             >
-                {/* <sphereGeometry /> */}
-                <boxGeometry args={[5, 5, 5]}/>
-                <meshNormalMaterial />
+                <boxGeometry args={[5, 5, 5]} />
+                {/* <sphereGeometry args={[10, 64]}/> */}
+                <meshNormalMaterial side={DoubleSide}/>
                 {/* <meshMatcapMaterial matcap={matcap}/> */}
             </instancedMesh>
         </InstancedRigidBodies>

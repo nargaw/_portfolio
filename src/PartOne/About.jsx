@@ -10,7 +10,7 @@ export default function About()
     const matcap = new TextureLoader().load('./Matcaps/matcapice.png')
     const cubes = useRef()
     const rigidBodies = useRef()
-    const cubesCount = 30
+    const cubesCount = 50
     const instances = useMemo(() => {
         const objects = []
         for(let i = 0; i < cubesCount; i++){
@@ -42,7 +42,7 @@ export default function About()
         // console.log(cubes.current)
         // console.log(rigidBodies.current)
         console.log(event.instanceId)
-        event.stopPropagation()
+        // event.stopPropagation()
         if(rigidBodies.current){
             rigidBodies.current.at(event.instanceId).applyImpulse({
                 x: 0,
@@ -56,8 +56,8 @@ export default function About()
         <InstancedRigidBodies 
             instances={instances} 
             type="dynamic"
-            restitution={0.6}
-            // friction={0.5}
+            restitution={0.9}
+            friction={0.5}
             gravityScale={0}
             colliders="cuboid"
             ref={rigidBodies}
@@ -72,8 +72,8 @@ export default function About()
             >
                 <boxGeometry args={[5, 5, 5]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}
-                {/* <meshStandardMaterial side={DoubleSide}/> */}
-                <meshMatcapMaterial matcap={matcap} flatShading={true}/>
+                <meshStandardMaterial  metalness={0.5} roughness={0.5} transparent={true} opacity={1} color={0xffaaaa}/>
+                {/* <meshMatcapMaterial matcap={matcap} /> */}
             </instancedMesh>
         </InstancedRigidBodies>
     </>

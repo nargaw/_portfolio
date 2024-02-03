@@ -41,8 +41,8 @@ export default function About()
     const handleClickInstance = (event) => {
         // console.log(cubes.current)
         // console.log(rigidBodies.current)
-        console.log(event.instanceId)
-        // event.stopPropagation()
+        // console.log(event.instanceId)
+        event.stopPropagation()
         if(rigidBodies.current){
             rigidBodies.current.at(event.instanceId).applyImpulse({
                 x: 0,
@@ -70,7 +70,7 @@ export default function About()
                 dispose={null}
                 onClick={handleClickInstance}
             >
-                <boxGeometry args={[5, 5, 5]} />
+                <boxGeometry args={[3, 3, 3]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}
                 <meshStandardMaterial  metalness={0.5} roughness={0.5} transparent={true} opacity={1} color={0xffaaaa}/>
                 {/* <meshMatcapMaterial matcap={matcap} /> */}

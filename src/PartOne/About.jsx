@@ -39,9 +39,6 @@ export default function About()
     }, [])
 
     const handleClickInstance = (event) => {
-        // console.log(cubes.current)
-        // console.log(rigidBodies.current)
-        // console.log(event.instanceId)
         event.stopPropagation()
         if(rigidBodies.current){
             rigidBodies.current.at(event.instanceId).applyImpulse({
@@ -68,7 +65,7 @@ export default function About()
                 ref={cubes}
                 args={[null, null, cubesCount]}
                 dispose={null}
-                onClick={handleClickInstance}
+                I={handleClickInstance}
             >
                 <boxGeometry args={[3, 3, 3]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}

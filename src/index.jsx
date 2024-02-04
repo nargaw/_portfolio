@@ -13,7 +13,7 @@ root.render(
     <>
         <StrictMode>
             <Leva />
-            <Canvas camera={{fov: 50, position:[0, 0, 150], near: 0.1, far: 1000}}>
+            <Canvas camera={{fov: 50, position:[0, 0, 150], near: 0.1, far: 10000}}>
                 <Experience />
             </Canvas>
         </StrictMode>

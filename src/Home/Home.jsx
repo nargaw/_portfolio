@@ -11,40 +11,60 @@ export default function About()
     const cubes = useRef()
     const rigidBodies = useRef()
     const cubesCount = 50
-    const instances = useMemo(() => {
-        const objects = []
-        for(let i = 0; i < cubesCount; i++){
-            const angle = Math.random() * Math.PI * 2
-            const radius = 2 + Math.random() * 20
-            const x = Math.cos(angle) * radius
-            const z = Math.sin(angle) * radius 
-            objects.push({
-                key: 'instance_' + i,
-                position: 
-                [
-                    x,
-                    (Math.random()) * 5,
-                    z
-                ],
-                rotation: 
-                [
-                    Math.random(),
-                    Math.random(),
-                    Math.random()
-                ]
-            })
-        }
+    // const instances = useMemo(() => {
+    //     const objects = []
+    //     for(let i = 0; i < cubesCount; i++){
+    //         const angle = Math.random() * Math.PI * 2
+    //         const radius = 2 + Math.random() * 20
+    //         const x = Math.cos(angle) * radius
+    //         const z = Math.sin(angle) * radius 
+    //         objects.push({
+    //             key: 'instance_' + i,
+    //             position: 
+    //             [
+    //                 x,
+    //                 (Math.random()) * 5,
+    //                 z
+    //             ],
+    //             rotation: 
+    //             [
+    //                 Math.random(),
+    //                 Math.random(),
+    //                 Math.random()
+    //             ]
+    //         })
+    //     }
 
-        return objects
-    }, [])
+    //     return objects
+    // })
+    const angle = Math.random() * Math.PI * 2
+    const radius = 2 + Math.random() * 20
+    const x = Math.cos(angle) * radius
+    const z = Math.sin(angle) * radius 
+    const instances = Array.from({length: cubesCount}).map((_, i) => ({
+        key: i,
+        position: 
+        [
+            Math.cos(Math.random() * Math.PI * 2 * 2 + Math.random() * 20 ),
+            (Math.random()) * 5,
+            Math.sin(Math.random() * Math.PI * 2 * 2 + Math.random() * 20 )
+        ],
+        rotation: 
+        [
+            Math.random(),
+            Math.random(),
+            Math.random()
+        ]
+    }))
 
     const handleClickInstance = (event) => {
         event.stopPropagation()
+        console.log(event)
         if(rigidBodies.current){
             rigidBodies.current.at(event.instanceId).applyImpulse({
                 x: 0,
                 y: 0,
-                z: Math.random() - 0.5 * 20000,
+                z: Math.random() - 0.5 * 5000,
             }, true)
         }
     }
@@ -65,7 +85,7 @@ export default function About()
                 ref={cubes}
                 args={[null, null, cubesCount]}
                 dispose={null}
-                I={handleClickInstance}
+                onClick={handleClickInstance}
             >
                 <boxGeometry args={[3, 3, 3]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}

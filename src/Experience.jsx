@@ -1,9 +1,9 @@
 import Shader from "./Shader/Shader"
 import { Physics } from "@react-three/rapier"
-import About from "./PartOne/About"
+import About from "./Home/Home"
 import { OrbitControls } from "@react-three/drei"
-import EnclosedBox from "./PartOne/EnclosedBox"
-import Environment from "./PartOne/Environment"
+import EnclosedBox from "./Home/EnclosedBox"
+import Environment from "./Home/Environment"
 
 export default function Experience()
 {

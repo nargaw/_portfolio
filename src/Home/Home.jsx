@@ -1,5 +1,5 @@
 import { CuboidCollider, InstancedRigidBodies, RigidBody, useRapier,  } from "@react-three/rapier"
-import { useMemo, useRef, useEffect } from "react"
+import { useMemo, useRef, useEffect, useState } from "react"
 import { useFrame, useThree, useLoader } from "@react-three/fiber"
 import { Vector2, Vector3, Raycaster, MeshBasicMaterial, TextureLoader, DoubleSide } from "three"
 import { useMatcapTexture } from "@react-three/drei"
@@ -11,54 +11,74 @@ export default function About()
     const cubes = useRef()
     const rigidBodies = useRef()
     const cubesCount = 50
-    // const instances = useMemo(() => {
-    //     const objects = []
-    //     for(let i = 0; i < cubesCount; i++){
-    //         const angle = Math.random() * Math.PI * 2
-    //         const radius = 2 + Math.random() * 20
-    //         const x = Math.cos(angle) * radius
-    //         const z = Math.sin(angle) * radius 
-    //         objects.push({
-    //             key: 'instance_' + i,
-    //             position: 
-    //             [
-    //                 x,
-    //                 (Math.random()) * 5,
-    //                 z
-    //             ],
-    //             rotation: 
-    //             [
-    //                 Math.random(),
-    //                 Math.random(),
-    //                 Math.random()
-    //             ]
-    //         })
-    //     }
-
-    //     return objects
-    // })
+    const maxCount = 150
     const angle = Math.random() * Math.PI * 2
     const radius = 2 + Math.random() * 20
     const x = Math.cos(angle) * radius
     const z = Math.sin(angle) * radius 
-    const instances = Array.from({length: cubesCount}).map((_, i) => ({
-        key: i,
+    const createBody = () => ({
+        key: Math.random(),
         position: 
         [
-            Math.cos(Math.random() * Math.PI * 2 * 2 + Math.random() * 20 ),
+            x,
             (Math.random()) * 5,
-            Math.sin(Math.random() * Math.PI * 2 * 2 + Math.random() * 20 )
+            z
         ],
         rotation: 
-        [
-            Math.random(),
-            Math.random(),
-            Math.random()
-        ]
-    }))
+                [
+                    Math.random(),
+                    Math.random(),
+                    Math.random()
+                ]
+    })
+
+    const [objs, setObjs] = useState(() => 
+        Array.from({
+            length: cubesCount
+        }).map(() => createBody())
+    )
+
+    const addMesh = () => {
+        if(cubesCount < maxCount){
+            setObjs((objs) => [...objs, createBody()])
+        }
+    }
+
+    const removeMesh = () => {
+        if(objs.length > 0){
+            setObjs((objs) => objs.slice(0, objs.length - 1))
+        }
+    }
+
+    const instances = useMemo(() => {
+        const objects = []
+        for(let i = 0; i < cubesCount; i++){
+            const angle = Math.random() * Math.PI * 2
+            const radius = 2 + Math.random() * 20
+            const x = Math.cos(angle) * radius
+            const z = Math.sin(angle) * radius 
+            objects.push({
+                key: 'instance_' + i,
+                position: 
+                [
+                    x,
+                    (Math.random()) * 5,
+                    z
+                ],
+                rotation: 
+                [
+                    Math.random(),
+                    Math.random(),
+                    Math.random()
+                ]
+            })
+        }
+
+        return objects
+    })
 
     const handleClickInstance = (event) => {
-        event.stopPropagation()
+        // event.stopPropagation()
         console.log(event)
         if(rigidBodies.current){
             rigidBodies.current.at(event.instanceId).applyImpulse({
@@ -83,9 +103,10 @@ export default function About()
             
             <instancedMesh 
                 ref={cubes}
-                args={[null, null, cubesCount]}
+                args={[null, null, maxCount]}
                 dispose={null}
                 onClick={handleClickInstance}
+                count={objs.length}
             >
                 <boxGeometry args={[3, 3, 3]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}

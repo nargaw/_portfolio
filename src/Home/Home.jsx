@@ -105,7 +105,7 @@ export default function About()
                 ref={cubes}
                 args={[null, null, maxCount]}
                 dispose={null}
-                onClick={handleClickInstance}
+                onPointerDown={handleClickInstance}
                 count={objs.length}
             >
                 <boxGeometry args={[3, 3, 3]} />

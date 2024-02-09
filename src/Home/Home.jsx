@@ -10,10 +10,10 @@ export default function About()
     const matcap = new TextureLoader().load('./Matcaps/matcapice.png')
     const cubes = useRef()
     const rigidBodies = useRef()
-    const cubesCount = 50
+    const cubesCount = 100
     const maxCount = 150
     const angle = Math.random() * Math.PI * 2
-    const radius = 2 + Math.random() * 20
+    const radius = 2 + Math.random() * 5
     const x = Math.cos(angle) * radius
     const z = Math.sin(angle) * radius 
     const createBody = () => ({
@@ -32,29 +32,11 @@ export default function About()
                 ]
     })
 
-    const [objs, setObjs] = useState(() => 
-        Array.from({
-            length: cubesCount
-        }).map(() => createBody())
-    )
-
-    const addMesh = () => {
-        if(cubesCount < maxCount){
-            setObjs((objs) => [...objs, createBody()])
-        }
-    }
-
-    const removeMesh = () => {
-        if(objs.length > 0){
-            setObjs((objs) => objs.slice(0, objs.length - 1))
-        }
-    }
-
     const instances = useMemo(() => {
         const objects = []
         for(let i = 0; i < cubesCount; i++){
-            const angle = Math.random() * Math.PI * 2
-            const radius = 2 + Math.random() * 20
+            const angle = Math.random() * Math.PI * 2 - 20
+            const radius =  Math.random() * 2 - 5
             const x = Math.cos(angle) * radius
             const z = Math.sin(angle) * radius 
             objects.push({
@@ -93,10 +75,10 @@ export default function About()
         <InstancedRigidBodies 
             instances={instances} 
             type="dynamic"
-            restitution={0.9}
-            friction={0.5}
+            restitution={0.8}
+            friction={0.0}
             gravityScale={0}
-            colliders="cuboid"
+            colliders="ball"
             ref={rigidBodies}
             canSleep={false}
         >
@@ -106,9 +88,10 @@ export default function About()
                 args={[null, null, maxCount]}
                 dispose={null}
                 onPointerDown={handleClickInstance}
-                count={objs.length}
+                count={instances.length}
+                castShadow
             >
-                <boxGeometry args={[3, 3, 3]} />
+                <sphereGeometry args={[3, 128]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}
                 <meshStandardMaterial  metalness={0.5} roughness={0.5} transparent={true} opacity={1} color={0xffaaaa}/>
                 {/* <meshMatcapMaterial matcap={matcap} /> */}

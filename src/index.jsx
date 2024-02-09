@@ -10,13 +10,17 @@ import SinglePage from './UI/SinglePage'
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
+
+const webglStyle = {
+    position: 'absolute'
+}
 // console.log(root)
 root.render(
     <>
         <StrictMode>
             <SinglePage />
             <Leva />
-            <Canvas camera={{fov: 50, position:[0, 0, 150], near: 0.1, far: 10000}}>
+            <Canvas shadows className='webgl' style={webglStyle} camera={{fov: 50, position:[0, 0, 150], near: 0.1, far: 10000}}>
                 <Experience />
             </Canvas>
         </StrictMode>

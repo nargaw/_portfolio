@@ -144,11 +144,45 @@ export default function SinglePage()
         color: "#f5f5f7",
     }
 
-    const projectOneStyle = {
-
+    const projectMainStyle = {
+        alignItems: 'flex-start',
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        gap: '16px',
+        height: 'min-content',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        padding: '16px',
+        position: 'relative',
+        textDecoration: 'none'
     }
 
-    const projectTwoStyle = {
+    const projectTitleStyle = {
+        fontFamily: 'Inter, san-serif',
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: '700',
+        letterSpacing: '0px',
+        lineHeight: '1.4em',
+        paragraphSpacing: '0px',
+        textAlignment: 'start',
+        color: "#f5f5f7"
+    }
+
+    const projectDetailStyle = {
+        fontFamily: "DM Mono, monospace",
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        letterSpacing: '0px',
+        lineHeight: '1.75em',
+        paragraphSpacing: '20px',
+        textAlignment: 'start',
+        color: "#f5f5f7"
+    }
+
+    const projectLinkStyle = {
 
     }
 
@@ -179,12 +213,15 @@ export default function SinglePage()
                 </div>
                 <div style={projectsStyle}>
                     <p style={projectsTitleStyle}>Projects</p>
-                    <div style={projectOneStyle}>
+                    <div style={projectMainStyle}>
                         {/* project one title */}
+                        <div style={projectTitleStyle}>Lumepath</div>
+                        
                         {/* project one detail */}
+                        <p style={projectDetailStyle}>This is lumepath and we do cool stuff here</p>
                         {/* project one link */}
                     </div>
-                    <div style={projectTwoStyle}>
+                    <div style={projectMainStyle}>
                         {/* project two title */}
                         {/* project two detail */}
                         {/* project two link */}

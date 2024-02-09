@@ -118,7 +118,38 @@ export default function SinglePage()
     //Project
 
     const projectsStyle = {
-        
+        alignItems: 'flex-start',
+        display: 'flex',
+        flex: 'none',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        gap: '16px',
+        height: 'min-content',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        padding: '16px 0',
+        position: 'relative',
+        width: '100%'
+    }
+
+    const projectsTitleStyle = {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '18px',
+        fontStyle: 'italic',
+        fontWeight: '900',
+        letterSpacing: '0px',
+        lineHeight: '1.4em',
+        paragraphSpacing: '40px',
+        textAlignment: 'start',
+        color: "#f5f5f7",
+    }
+
+    const projectOneStyle = {
+
+    }
+
+    const projectTwoStyle = {
+
     }
 
     return <>
@@ -147,7 +178,17 @@ export default function SinglePage()
                     </div>
                 </div>
                 <div style={projectsStyle}>
-
+                    <p style={projectsTitleStyle}>Projects</p>
+                    <div style={projectOneStyle}>
+                        {/* project one title */}
+                        {/* project one detail */}
+                        {/* project one link */}
+                    </div>
+                    <div style={projectTwoStyle}>
+                        {/* project two title */}
+                        {/* project two detail */}
+                        {/* project two link */}
+                    </div>
                 </div>
             </div>
       

@@ -5,7 +5,7 @@ export default function EnclosedBox()
 {
     const matcap = new TextureLoader().load('./Matcaps/matcapBlue.png')
     return <>
-        <RigidBody type="fixed" friction={0} restitution={0.6}>
+        <RigidBody type="fixed" friction={0} restitution={0.9}>
             <mesh receiveShadow position={[-70, 0, 0]} rotation-y={Math.PI * 0.5}>
                 <boxGeometry args={[200, 100, 5]}/>
                 {/* <meshStandardMaterial />     */}

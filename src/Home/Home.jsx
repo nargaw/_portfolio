@@ -93,8 +93,9 @@ export default function About()
             >
                 <sphereGeometry args={[3, 128]} />
                 {/* <sphereGeometry args={[10, 64]}/> */}
-                <meshStandardMaterial  metalness={0.5} roughness={0.5} transparent={true} opacity={1} color={0xffaaaa}/>
-                {/* <meshMatcapMaterial matcap={matcap} /> */}
+                {/* <meshStandardMaterial  metalness={0.5} roughness={0.5} transparent={true} opacity={1} color={0xffaaaa}/> */}
+                <meshMatcapMaterial matcap={matcap} />
+                {/* <meshBasicMaterial /> */}
             </instancedMesh>
         </InstancedRigidBodies>
     </>

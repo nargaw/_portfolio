@@ -47,6 +47,12 @@ body,
   border-radius: 50%;
 }
 
+a:visited{
+  text-decoration: none;
+  outline: 0;
+  color: "#0989f8";
+}
+
 
 p{
   margin: 0

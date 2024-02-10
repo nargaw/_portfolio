@@ -373,7 +373,7 @@ export default function SinglePage()
                     </p>
 
                     {/* project one link */}
-                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://lumepath.org">lumepath.org</a></p>
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://lumepath.org">lumepath.org (coming soon)</a></p>
                 </div>
                 <div style={projectMainStyle}>
                     {/* project two title */}
@@ -381,7 +381,7 @@ export default function SinglePage()
                     
                     {/* project two detail */}
                     <p style={projectDetailStyle}>
-                        SHADER DAILY is a compilation of more than 700 shader projects that are easily accessible in a single website. Projects are built using fragment and vertex shaders. Check it out!
+                        SHADER DAILY is a compilation of more than 700 shader projects that are easily accessible in a single website. Projects are built using fragment and vertex shaders utilizing the Three.js library.
                     </p>
 
                     {/* project two link */}
@@ -393,7 +393,7 @@ export default function SinglePage()
                     
                     {/* project three detail */}
                     <p style={projectDetailStyle}>
-                        SOST STUDIO is design and development studio with heighest standards in producing immersive and engaging web experiences to elevate brands by expanding reach, enchancing customer experience and help businesses unlock their full potential.
+                        SOST STUDIO is a design and development studio with highest standards in producing immersive and engaging web experiences to elevate brands by expanding reach, enchancing customer experience and help businesses unlock their full potential.
                     </p>
 
                     {/* project three link */}
@@ -407,7 +407,7 @@ export default function SinglePage()
                     <div style={contactItemStyle}>
                         <p style={contactItemLabel}>Email</p>
                         <div style={contactItemLine}></div>
-                        <p style={contactItemLink}>nateargaw@gmail.com</p>
+                        <p style={contactItemLink}><a href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
                     </div>
                     <div style={contactItemStyle}>
                         <p style={contactItemLabel}>Twitter</p>

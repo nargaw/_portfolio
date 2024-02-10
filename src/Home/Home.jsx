@@ -7,7 +7,7 @@ import { useMatcapTexture } from "@react-three/drei"
 
 export default function About()
 {
-    const matcap = new TextureLoader().load('./Matcaps/matcapice.png')
+    const matcap = new TextureLoader().load('./Matcaps/matcapBlue.png')
     const cubes = useRef()
     const rigidBodies = useRef()
     const cubesCount = 100
@@ -78,7 +78,7 @@ export default function About()
             restitution={0.8}
             friction={0.0}
             gravityScale={0}
-            colliders="ball"
+            colliders="hull"
             ref={rigidBodies}
             canSleep={false}
         >
@@ -91,7 +91,8 @@ export default function About()
                 count={instances.length}
                 castShadow
             >
-                <sphereGeometry args={[3, 128]} />
+                {/* <sphereGeometry args={[3, 128]} /> */}
+                <torusGeometry args={[3,1.5]}/>
                 {/* <sphereGeometry args={[10, 64]}/> */}
                 {/* <meshStandardMaterial  metalness={0.5} roughness={0.5} transparent={true} opacity={1} color={0xffaaaa}/> */}
                 <meshMatcapMaterial matcap={matcap} />

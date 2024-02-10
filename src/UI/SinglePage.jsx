@@ -287,7 +287,7 @@ export default function SinglePage()
         overflow: 'hidden',
         padding: 0,
         position: 'relative',
-        width: '100px',
+        width: '110px',
         backgroundColor: '#f5f5f720'
     }
 
@@ -334,6 +334,19 @@ export default function SinglePage()
         fontFamily: 'DM Mono, monospace',
         lineHeight: '1.75em',
         color: "#0989f8"
+    }
+
+    const link = {
+        fontFamily: "DM Mono, monospace",
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        letterSpacing: '0px',
+        lineHeight: '1.75em',
+        paragraphSpacing: '20px',
+        textAlignment: 'start',
+        color: "#0989f8",
+        textDecoration: 'none'
     }
 
     return <>
@@ -407,17 +420,17 @@ export default function SinglePage()
                     <div style={contactItemStyle}>
                         <p style={contactItemLabel}>Email</p>
                         <div style={contactItemLine}></div>
-                        <p style={contactItemLink}><a href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
+                        <p style={contactItemLink}><a style={link} href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
                     </div>
                     <div style={contactItemStyle}>
                         <p style={contactItemLabel}>Twitter</p>
                         <div style={contactItemLine2}></div>
-                        <p style={contactItemLink}>@nate_dev_</p>
+                        <p style={contactItemLink}><a style={link} href="https://twitter.com/nate_dev_">@nate_dev_</a></p>
                     </div>
                     <div style={contactItemStyle}>
                         <p style={contactItemLabel}>Linkedin</p>
                         <div style={contactItemLine3}></div>
-                        <p style={contactItemLink}>in/nateargaw</p>
+                        <p style={contactItemLink}><a style={link} href="https://www.linkedin.com/in/nateargaw/">in/nateargaw</a></p>
                     </div>
                 </div>
             </div>

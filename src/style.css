@@ -43,7 +43,7 @@ body,
 .glowCircle{
   width: 16px;
   height: 16px;
-  background-color: #00ff00;
+  background-color: #0989f8;
   border-radius: 50%;
 }
 
@@ -55,7 +55,7 @@ p{
 svg {
   width: 16px;
   height: 16px;
-  fill: #ff1177;
+  fill: #0989f8;
 }
 
 ::-webkit-scrollbar {

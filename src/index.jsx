@@ -12,7 +12,7 @@ import SinglePage from './UI/SinglePage'
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 const webglStyle = {
-    position: 'absolute'
+    position: 'fixed'
 }
 // console.log(root)
 root.render(

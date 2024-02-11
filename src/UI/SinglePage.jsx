@@ -373,6 +373,10 @@ export default function SinglePage()
         transform: 'translateX(-15px)'
     }
 
+    const toggleButton = () => {
+        
+    }
+
     return <>
         <div style={containerStyle} className="container">
             <div style={headerStyle}>

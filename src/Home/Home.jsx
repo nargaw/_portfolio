@@ -10,14 +10,14 @@ export default function About()
     const matcap = new TextureLoader().load('./Matcaps/matcapBlue.png')
     const cubes = useRef()
     const rigidBodies = useRef()
-    const cubesCount = 100
+    const cubesCount = 50
     
     const instances = useMemo(() => {
         const objects = []
         for(let i = 0; i < cubesCount; i++){
             const angle = Math.random() * Math.PI * 2 - 20
             const radius =  Math.random() * 2 - 5
-            const x = Math.cos(angle) * radius 
+            const x = Math.cos(angle) * radius * 20
             const z = Math.sin(angle) * radius
             objects.push({
                 key: 'instance_' + i,

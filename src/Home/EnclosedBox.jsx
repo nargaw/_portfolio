@@ -9,28 +9,23 @@ export default function EnclosedBox()
             <mesh receiveShadow position={[-70, 0, 0]} rotation-y={Math.PI * 0.5}>
                 <boxGeometry args={[200, 100, 5]}/>
                 {/* <meshStandardMaterial />     */}
-                <meshMatcapMaterial matcap={matcap} />
-            </mesh>
+                <meshStandardMaterial transparent={true} opacity={0} visible={false} />
             <mesh receiveShadow position={[70, 0, 0]} rotation-y={Math.PI * 0.5}>
                 <boxGeometry args={[200, 100, 5]}/>
                 {/* <meshStandardMaterial />     */}
-                <meshMatcapMaterial matcap={matcap} />
-            </mesh>
+                <meshStandardMaterial transparent={true} opacity={0} visible={false} />
             <mesh receiveShadow position={[0, -50, 0]} rotation-x={Math.PI * 0.5}>
                 <boxGeometry args={[150, 200, 5]}/>
                 {/* <meshStandardMaterial />     */}
-                <meshMatcapMaterial matcap={matcap} />
-            </mesh>
+                <meshStandardMaterial transparent={true} opacity={0} visible={false} />
             <mesh receiveShadow position={[0, 50, 0]} rotation-x={Math.PI * 0.5}>
                 <boxGeometry args={[150, 200, 5]}/>
                 {/* <meshStandardMaterial />     */}
-                <meshMatcapMaterial matcap={matcap} />
-            </mesh>
+                <meshStandardMaterial transparent={true} opacity={0} visible={false} />
             <mesh receiveShadow position={[0, 0, -20]} >
                 <boxGeometry args={[150, 100, 5]}/>
                 {/* <meshStandardMaterial />     */}
-                <meshMatcapMaterial matcap={matcap} />
-            </mesh>
+                <meshStandardMaterial transparent={true} opacity={0} visible={false} />
             <mesh receiveShadow position={[0, 0, 100]} >
                 <boxGeometry args={[150, 100, 5]}/>
                 <meshStandardMaterial transparent={true} opacity={0} visible={false} />    

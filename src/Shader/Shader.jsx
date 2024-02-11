@@ -63,7 +63,7 @@ export default function Shader()
     
         <mesh ref={mesh} position={[0, 0, -30]}>
             {/* <icosahedronGeometry args={[150, 128]} /> */}
-            <planeGeometry args={[300, 300]} />
+            <planeGeometry args={[500, 500]} />
             <shaderMaterial
                 side={DoubleSide} 
                 fragmentShader={fragmentShader}

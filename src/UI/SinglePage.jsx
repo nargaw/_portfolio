@@ -349,6 +349,30 @@ export default function SinglePage()
         textDecoration: 'none'
     }
 
+    const lightDarkToggleStyle = {
+        display: 'flex',
+        background: '#ffffff',
+        width: '60px',
+        height: '30px',
+        margin: '0 auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '100px',
+        cursor: 'pointer'
+    }
+
+    const toggleCircleStyle = {
+        content: '',
+        background: '#000',
+        width: '24px',
+        height: '24px',
+        borderRadius: '50%',
+        // position: 'absolute',
+        top: '5px',
+        left: '4px',
+        transform: 'translateX(-15px)'
+    }
+
     return <>
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
@@ -435,6 +459,7 @@ export default function SinglePage()
                 </div>
             </div>
             <div style={dividerStyle}></div>
+            <div  style={lightDarkToggleStyle}><div style={toggleCircleStyle}></div></div>
         </div> 
     </>
 }

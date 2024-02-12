@@ -24,7 +24,7 @@ export default function SinglePage()
         // width: '100%'
         PointerEvents: 'none',
         backgroundColor: style == 'dark' ? "#f5f5f720" : '#0a0a0820',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const headerStyle = {
@@ -48,14 +48,14 @@ export default function SinglePage()
         fontStyle: "italic",
         fontSize: "36px",
         margin: '0',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const titleDescription = {
         fontFamily: "DM Mono, monospace",
         color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontSize: '14px',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const titleDetail = {
@@ -65,7 +65,7 @@ export default function SinglePage()
         paragraphSpacing: '20px',
         lineHeight: '1.75em',
         textAlignment: 'start',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const titleExtra = {
@@ -97,7 +97,7 @@ export default function SinglePage()
         position: 'relative',
         width: '16px',
         fill: style == 'dark' ? "#f5f5f7" : '#0a0a08',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const titleExtraLocationText = {
@@ -117,7 +117,7 @@ export default function SinglePage()
         paragraphSpacing: '20px',
         lineHeight: '1.75em',
         letterSpacing: '0px',
-        transition: '0.5s all ease'    
+        transition: '.75s all ease'    
     }
 
     const titleAvailability = {
@@ -157,7 +157,7 @@ export default function SinglePage()
         paragraphSpacing: '40px',
         textAlignment: 'start',
         color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const projectMainStyle = {
@@ -184,7 +184,7 @@ export default function SinglePage()
         paragraphSpacing: '0px',
         textAlignment: 'start',
         color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const projectDetailStyle = {
@@ -197,7 +197,7 @@ export default function SinglePage()
         paragraphSpacing: '20px',
         textAlignment: 'start',
         color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const projectLinkStyle = {
@@ -249,7 +249,7 @@ export default function SinglePage()
         paragraphSpacing: '40px',
         textAlignment: 'start',
         color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const contactlistStyle = {
@@ -291,7 +291,7 @@ export default function SinglePage()
         paragraphSpacing: '20px',
         textAlignment: 'start',
         color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const contactItemLine = {
@@ -309,7 +309,7 @@ export default function SinglePage()
         position: 'relative',
         width: '110px',
         backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const contactItemLine2 = {
@@ -327,7 +327,7 @@ export default function SinglePage()
         position: 'relative',
         width: '170px',
         backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const contactItemLine3 = {
@@ -345,7 +345,7 @@ export default function SinglePage()
         position: 'relative',
         width: '140px',
         backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const contactItemLink = {
@@ -357,7 +357,7 @@ export default function SinglePage()
         fontFamily: 'DM Mono, monospace',
         lineHeight: '1.75em',
         color: "#0989f8",
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const link = {
@@ -371,7 +371,7 @@ export default function SinglePage()
         textAlignment: 'start',
         color: "#0989f8",
         textDecoration: 'none',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const lightDarkToggleStyle = {
@@ -384,7 +384,7 @@ export default function SinglePage()
         alignItems: 'center',
         borderRadius: '100px',
         cursor: 'pointer',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const lightDarkToggleStyle2 = {
@@ -397,7 +397,7 @@ export default function SinglePage()
         alignItems: 'center',
         borderRadius: '100px',
         cursor: 'pointer',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const toggleCircleStyle = {
@@ -409,7 +409,7 @@ export default function SinglePage()
         top: '5px',
         left: '4px',
         transform: 'translateX(-15px)',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     const toggleCircleStyle2 = {
@@ -421,13 +421,13 @@ export default function SinglePage()
         top: '5px',
         left: '4px',
         transform: 'translateX(15px)',
-        transition: '0.5s all ease'
+        transition: '.75s all ease'
     }
 
     
     
     if(style == 'dark' ? document.body.style.backgroundColor = '#000' : document.body.style.backgroundColor = '#fff')
-    document.body.style.transition = '0.5s all ease'
+    document.body.style.transition = '.75s all ease'
 
     return <>
         <div style={containerStyle} className="container">

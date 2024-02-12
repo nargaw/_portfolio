@@ -20,7 +20,7 @@ root.render(
         <StrictMode>
             <SinglePage />
             <Leva />
-            <Canvas shadows className='webgl' style={webglStyle} camera={{fov: 50, position:[0, -25, 150], near: 0.1, far: 300}}>
+            <Canvas shadows className='webgl' style={webglStyle} camera={{fov: 50, position:[0, -5, 160], near: 0.1, far: 300}}>
                 <Experience />
             </Canvas>
         </StrictMode>

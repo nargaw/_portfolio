@@ -9,17 +9,6 @@ import { useControls } from "leva"
 export default function Shader()
 {
 
-    // const planetUniforms = useControls("Planet Variables", {
-    //     color1: '#4c6ad9',
-    //     color2: '#485096',
-    //     planetVal: {
-    //         value: 4.11,
-    //         min: 2.0,
-    //         max: 5.0,
-    //         step: 0.01
-    //     }
-    // })
-
     const mesh = useRef()
     const uniforms = useMemo(
         () => ({
@@ -28,10 +17,6 @@ export default function Shader()
             u_resolution: { value: new Vector2(window.innerWidth, window.innerHeight)}
         }), []
     )
-
-    // window.addEventListener('resize', () => {
-    //     mesh.current.material.unifroms.u_resolution = new Vector2(window.innerWidth, window.innerHeight)
-    // })
 
     let currentTime = 0
     useThree((state) => {
@@ -62,7 +47,6 @@ export default function Shader()
     return <>
     
         <mesh ref={mesh} position={[0, 0, -30]}>
-            {/* <icosahedronGeometry args={[150, 128]} /> */}
             <planeGeometry args={[500, 500]} />
             <shaderMaterial
                 side={DoubleSide} 

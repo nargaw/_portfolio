@@ -1,13 +1,3 @@
-html,
-body,
-#root
-{
-    
-    background-color: #020202;
-    
-    /* touch-action: none; */
-}
-
 .webgl {
   z-index: 0;
   position: fixed;

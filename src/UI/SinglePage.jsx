@@ -1,5 +1,14 @@
+import { useState } from "react"
+
 export default function SinglePage()
 {
+    const [style, setStyle] = useState('dark')
+
+    const changeStyle = () => {
+        if(style!== 'light') setStyle('light')
+        else setStyle('dark')
+    }
+
     const containerStyle = {
         alignContent: 'center',
         alignItems: 'center',
@@ -14,7 +23,8 @@ export default function SinglePage()
         position: 'relative',
         // width: '100%'
         PointerEvents: 'none',
-        backgroundColor: '#1f1f1f50'
+        backgroundColor: style == 'dark' ? "#f5f5f720" : '#0a0a0820',
+        transition: '0.5s all ease'
     }
 
     const headerStyle = {
@@ -34,25 +44,28 @@ export default function SinglePage()
 
     const titleStyle = {
         fontFamily: "Inter, sans-serif",
-        color: "#f5f5f7",
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontStyle: "italic",
         fontSize: "36px",
-        margin: '0'
+        margin: '0',
+        transition: '0.5s all ease'
     }
 
     const titleDescription = {
         fontFamily: "DM Mono, monospace",
-        color: "#f5f5f7",
-        fontSize: '14px'
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        fontSize: '14px',
+        transition: '0.5s all ease'
     }
 
     const titleDetail = {
         fontFamily: "DM Mono, monospace",
-        color: "#f5f5f7",
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontSize: '14px',
         paragraphSpacing: '20px',
         lineHeight: '1.75em',
-        textAlignment: 'start'
+        textAlignment: 'start',
+        transition: '0.5s all ease'
     }
 
     const titleExtra = {
@@ -83,7 +96,8 @@ export default function SinglePage()
         height: '16px',
         position: 'relative',
         width: '16px',
-        fill: "#f5f5f7",
+        fill: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        transition: '0.5s all ease'
     }
 
     const titleExtraLocationText = {
@@ -96,13 +110,14 @@ export default function SinglePage()
 
     const textParagraph = {
         fontFamily: "DM Mono, monospace",
-        color: "#f5f5f7",
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontSize: '14px',
         fontStyle: 'normal',
         textAlignment: 'start',
         paragraphSpacing: '20px',
         lineHeight: '1.75em',
-        letterSpacing: '0px'    
+        letterSpacing: '0px',
+        transition: '0.5s all ease'    
     }
 
     const titleAvailability = {
@@ -141,7 +156,8 @@ export default function SinglePage()
         lineHeight: '1.4em',
         paragraphSpacing: '40px',
         textAlignment: 'start',
-        color: "#f5f5f7",
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        transition: '0.5s all ease'
     }
 
     const projectMainStyle = {
@@ -167,7 +183,8 @@ export default function SinglePage()
         lineHeight: '1.4em',
         paragraphSpacing: '0px',
         textAlignment: 'start',
-        color: "#f5f5f7"
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        transition: '0.5s all ease'
     }
 
     const projectDetailStyle = {
@@ -179,7 +196,8 @@ export default function SinglePage()
         lineHeight: '1.75em',
         paragraphSpacing: '20px',
         textAlignment: 'start',
-        color: "#f5f5f7"
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        transition: '0.5s all ease'
     }
 
     const projectLinkStyle = {
@@ -197,7 +215,7 @@ export default function SinglePage()
 
     const dividerStyle = {
         borderBottomWidth: '1px',
-        borderColor: '#ffffff20',
+        borderColor: style == 'dark' ? '#ffffff20' : '#0a0a0820' ,
         borderLeftWidth: '0px',
         borderRightWidth: '0px',
         borderStyle: 'solid',
@@ -230,7 +248,8 @@ export default function SinglePage()
         lineHeight: '1.4em',
         paragraphSpacing: '40px',
         textAlignment: 'start',
-        color: "#f5f5f7",
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        transition: '0.5s all ease'
     }
 
     const contactlistStyle = {
@@ -271,7 +290,8 @@ export default function SinglePage()
         lineHeight: '1.75em',
         paragraphSpacing: '20px',
         textAlignment: 'start',
-        color: '#f5f5f7'
+        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        transition: '0.5s all ease'
     }
 
     const contactItemLine = {
@@ -288,7 +308,8 @@ export default function SinglePage()
         padding: 0,
         position: 'relative',
         width: '110px',
-        backgroundColor: '#f5f5f720'
+        backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
+        transition: '0.5s all ease'
     }
 
     const contactItemLine2 = {
@@ -305,7 +326,8 @@ export default function SinglePage()
         padding: 0,
         position: 'relative',
         width: '170px',
-        backgroundColor: '#f5f5f720'
+        backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
+        transition: '0.5s all ease'
     }
 
     const contactItemLine3 = {
@@ -322,7 +344,8 @@ export default function SinglePage()
         padding: 0,
         position: 'relative',
         width: '140px',
-        backgroundColor: '#f5f5f720'
+        backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
+        transition: '0.5s all ease'
     }
 
     const contactItemLink = {
@@ -333,7 +356,8 @@ export default function SinglePage()
         flexShrink: 0,
         fontFamily: 'DM Mono, monospace',
         lineHeight: '1.75em',
-        color: "#0989f8"
+        color: "#0989f8",
+        transition: '0.5s all ease'
     }
 
     const link = {
@@ -346,7 +370,8 @@ export default function SinglePage()
         paragraphSpacing: '20px',
         textAlignment: 'start',
         color: "#0989f8",
-        textDecoration: 'none'
+        textDecoration: 'none',
+        transition: '0.5s all ease'
     }
 
     const lightDarkToggleStyle = {
@@ -358,7 +383,21 @@ export default function SinglePage()
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: '100px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        transition: '0.5s all ease'
+    }
+
+    const lightDarkToggleStyle2 = {
+        display: 'flex',
+        background: '#000',
+        width: '60px',
+        height: '30px',
+        margin: '0 auto',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '100px',
+        cursor: 'pointer',
+        transition: '0.5s all ease'
     }
 
     const toggleCircleStyle = {
@@ -367,21 +406,34 @@ export default function SinglePage()
         width: '24px',
         height: '24px',
         borderRadius: '50%',
-        // position: 'absolute',
         top: '5px',
         left: '4px',
-        transform: 'translateX(-15px)'
+        transform: 'translateX(-15px)',
+        transition: '0.5s all ease'
     }
 
-    const toggleButton = () => {
-        
+    const toggleCircleStyle2 = {
+        content: '',
+        background: '#fff',
+        width: '24px',
+        height: '24px',
+        borderRadius: '50%',
+        top: '5px',
+        left: '4px',
+        transform: 'translateX(15px)',
+        transition: '0.5s all ease'
     }
+
+    
+    
+    if(style == 'dark' ? document.body.style.backgroundColor = '#000' : document.body.style.backgroundColor = '#fff')
+    document.body.style.transition = '0.5s all ease'
 
     return <>
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
-                <div style={titleDescription}>Front-end developer and designer with focus on 3D and WebGL</div>
+                <div style={titleDescription}>Creative Developer and Designer</div>
                 <div style={titleDetail}>A passionate problem-solver adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>
@@ -396,7 +448,7 @@ export default function SinglePage()
                     <div style={titleAvailability}>
                         <div className="glowCircle"></div>
                         <div style={titleExtraLocationText}>
-                            <p style={textParagraph}>Available for work</p>
+                            <p style={textParagraph}>Available for Freelance Projects</p>
                         </div>
                     </div>
                 </div>
@@ -410,7 +462,7 @@ export default function SinglePage()
                     
                     {/* project one detail */}
                     <p style={projectDetailStyle}>
-                        LUMEPATH is a medical software application that helps patients understand their diagnosis in an engaging and interactive way using cutting-edge web technologies.
+                        LUMEPATH is a web-based medical software application built to help patients understand their diagnosis in an engaging and interactive way by utilizing 3D anatomic models.
                     </p>
 
                     {/* project one link */}
@@ -463,7 +515,7 @@ export default function SinglePage()
                 </div>
             </div>
             <div style={dividerStyle}></div>
-            <div  style={lightDarkToggleStyle}><div style={toggleCircleStyle}></div></div>
+            <div onClick={changeStyle} className="toggle" style={style == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={style == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>
         </div> 
     </>
 }

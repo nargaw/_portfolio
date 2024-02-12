@@ -1,9 +1,6 @@
-import { CuboidCollider, InstancedRigidBodies, RigidBody, useRapier,  } from "@react-three/rapier"
-import { useMemo, useRef, useEffect, useState } from "react"
-import { useFrame, useThree, useLoader } from "@react-three/fiber"
-import { Vector2, Vector3, Raycaster, MeshBasicMaterial, TextureLoader, DoubleSide } from "three"
-import { useMatcapTexture } from "@react-three/drei"
-
+import { InstancedRigidBodies} from "@react-three/rapier"
+import { useMemo, useRef} from "react"
+import { TextureLoader } from "three"
 
 export default function About()
 {
@@ -17,7 +14,7 @@ export default function About()
         for(let i = 0; i < cubesCount; i++){
             const angle = Math.random() * Math.PI * 2 - 20
             const radius =  Math.random() * 2 - 5
-            const x = Math.cos(angle) * radius * 20
+            const x = Math.cos(angle) * radius * 10
             const z = Math.sin(angle) * radius
             objects.push({
                 key: 'instance_' + i,
@@ -25,7 +22,7 @@ export default function About()
                 [
                     x,
                     (Math.random()) * 5,
-                    25
+                    75
                 ],
                 rotation: 
                 [
@@ -43,7 +40,7 @@ export default function About()
         <InstancedRigidBodies 
             instances={instances} 
             type="dynamic"
-            restitution={0.9}
+            restitution={0.5}
             friction={0.0}
             gravityScale={0}
             colliders="hull"

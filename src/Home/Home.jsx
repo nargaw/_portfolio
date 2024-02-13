@@ -4,10 +4,10 @@ import { TextureLoader } from "three"
 
 export default function About()
 {
-    const matcap = new TextureLoader().load('./Matcaps/matcapBlue.png')
+    const matcapLight = new TextureLoader().load('./Matcaps/matcapBlackShiny.png')
     const cubes = useRef()
     const rigidBodies = useRef()
-    const cubesCount = 50
+    const cubesCount = 25
     
     const instances = useMemo(() => {
         const objects = []
@@ -56,7 +56,7 @@ export default function About()
                 castShadow
             >
                 <torusGeometry args={[3,1.5]}/>
-                <meshMatcapMaterial matcap={matcap} />
+                <meshMatcapMaterial matcap={matcapLight} />
             </instancedMesh>
         </InstancedRigidBodies>
     </>

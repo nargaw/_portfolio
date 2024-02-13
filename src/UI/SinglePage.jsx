@@ -516,6 +516,7 @@ export default function SinglePage()
             </div>
             <div style={dividerStyle}></div>
             <div onClick={changeStyle} className="toggle" style={style == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={style == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>
+            <div style={dividerStyle}></div>
         </div> 
     </>
 }

@@ -434,7 +434,7 @@ export default function SinglePage()
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
                 <div style={titleDescription}>Creative Developer and Designer</div>
-                <div style={titleDetail}>A passionate problem-solver adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
+                <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences to solve real-life problems. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>
                         <div style={titleExtraMapPinLocation}>

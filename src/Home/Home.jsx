@@ -35,6 +35,15 @@ export default function About()
 
         return objects
     })
+
+    const handleOrientation = (event) => {
+        
+        const x = event.beta / 180
+        const y = event.gamma / 90
+        console.log(x, y)
+    }
+
+    window.addEventListener('deviceorientation', handleOrientation, true)
  
     return <>
         <InstancedRigidBodies 

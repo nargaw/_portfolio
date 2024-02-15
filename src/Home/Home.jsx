@@ -50,18 +50,19 @@ export default function About()
 
     useFrame(() => {
         
-        // if(x <= 1.0 && x >= 0. ){
-        //     console.log('x: ' + x)
-        // }
+        if(x <= 0.5 && x >= -0.5 ){
+            console.log('x: ' + x)
+            if(rigidBodies.current){
+                rigidBodies.current.forEach((api) => {
+                    api.applyImpulse({ x: x , y: 0, z: 0})
+                })
+            }
+        }
         // if(y <= 1. && y >= 0.){
         //     console.log('y: ' + y)
         // }
 
-        if(rigidBodies.current){
-            rigidBodies.current.forEach((api) => {
-                api.applyImpulse({ x: x * 5, y: y * 5, z: 0})
-            })
-        }
+        
 
     })
  

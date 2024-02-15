@@ -50,11 +50,11 @@ export default function About()
 
     useFrame(() => {
         
-        if(x <= 0.5 && x >= -0.5 ){
+        if(y <= 0.5 && y >= -0.5 ){
             console.log('x: ' + x)
             if(rigidBodies.current){
                 rigidBodies.current.forEach((api) => {
-                    api.applyImpulse({ x: x , y: 0, z: 0})
+                    api.applyImpulse({ x: y * 10 , y: 0, z: 0})
                 })
             }
         }

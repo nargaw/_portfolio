@@ -54,7 +54,7 @@ export default function About()
             console.log('x: ' + y)
             if(rigidBodies.current){
                 rigidBodies.current.forEach((api) => {
-                    api.applyImpulse({ x: y * 10 , y: 0, z: 0})
+                    api.applyImpulse({ x: y * 50 , y: 0, z: 0})
                 })
             }
         }

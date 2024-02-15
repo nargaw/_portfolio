@@ -18,7 +18,7 @@ const webglStyle = {
 root.render(
     <>
         <StrictMode>
-            {/* <SinglePage /> */}
+            <SinglePage />
             <Leva />
             <Canvas shadows className='webgl' style={webglStyle} camera={{fov: 50, position:[0, -5, 160], near: 0.1, far: 3000}}>
                 <Experience />

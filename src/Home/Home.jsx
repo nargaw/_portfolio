@@ -41,8 +41,8 @@ export default function About()
     let y
 
     const handleOrientation = (e) => {
-        x = -(e.beta / 180) * 2 * (math.random + 0.5)
-        y = (e.gamma / 90 / 2) * 2 * (math.random + 0.5)
+        x = -(e.beta / 180) * 2 
+        y = (e.gamma / 90 / 2) * 2 
         // console.log(e)
     }
 

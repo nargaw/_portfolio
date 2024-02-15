@@ -26,7 +26,7 @@ export default function HiddenBall()
     useFrame((state) => {
         const y = mouseY * 50
         const x = mouseX * 100
-        rigidBodyRef.current.setNextKinematicTranslation({x: x, y: y, z: 85})
+        rigidBodyRef?.current?.setNextKinematicTranslation({x: x, y: y, z: 85})
     })
     
 

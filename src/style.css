@@ -1,4 +1,9 @@
+body{
+  background-color: '#000';
+}
+
 .webgl {
+  background-color: '#000';
   z-index: 0;
   position: fixed;
   top: 0;

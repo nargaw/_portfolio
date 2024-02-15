@@ -3,7 +3,6 @@ import { TextureLoader } from "three";
 
 export default function EnclosedBox()
 {
-    const matcap = new TextureLoader().load('./Matcaps/matcapBlue.png')
     return <>
         <RigidBody type="fixed" friction={0} restitution={0.5}>
             <mesh  position={[-70, 0, 0]} rotation-y={Math.PI * 0.5}>

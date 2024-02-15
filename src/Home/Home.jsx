@@ -1,3 +1,4 @@
+import { useFrame } from "@react-three/fiber"
 import { InstancedRigidBodies} from "@react-three/rapier"
 import { useMemo, useRef} from "react"
 import { TextureLoader } from "three"
@@ -36,14 +37,20 @@ export default function About()
         return objects
     })
 
-    const handleOrientation = (event) => {
-        
-        const x = event.beta / 180
-        const y = event.gamma / 90
-        console.log(x, y)
+    let x
+    let y
+
+    const handleOrientation = (e) => {
+        x = e.beta / 180
+        y = e.gamma / 90
+        console.log(e)
     }
 
     window.addEventListener('deviceorientation', handleOrientation, true)
+
+    // useFrame(() => {
+    //     console.log(x, y)
+    // })
  
     return <>
         <InstancedRigidBodies 

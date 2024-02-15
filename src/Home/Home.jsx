@@ -8,7 +8,7 @@ export default function About()
     const matcapLight = new TextureLoader().load('./Matcaps/matcapBlackShiny.png')
     const cubes = useRef()
     const rigidBodies = useRef()
-    const cubesCount = 25
+    const cubesCount = 50
     
     const instances = useMemo(() => {
         const objects = []

@@ -43,14 +43,14 @@ export default function About()
     const handleOrientation = (e) => {
         x = e.beta / 180
         y = e.gamma / 90
-        console.log(e)
+        // console.log(e)
     }
 
     window.addEventListener('deviceorientation', handleOrientation, true)
 
-    // useFrame(() => {
-    //     console.log(x, y)
-    // })
+    useFrame(() => {
+        console.log(x, y)
+    })
  
     return <>
         <InstancedRigidBodies 

@@ -42,14 +42,21 @@ export default function About()
 
     const handleOrientation = (e) => {
         x = e.beta / 180
-        y = e.gamma / 90
+        y = e.gamma / 90 / 2
         // console.log(e)
     }
 
     window.addEventListener('deviceorientation', handleOrientation, true)
 
     useFrame(() => {
-        console.log(x, y)
+        
+        if(x <= 0.5 && x >= -0.5 ){
+            console.log('x: ' + x)
+        }
+        if(y <= 0.5 && y >= -0.5){
+            console.log('y: ' + y)
+        }
+
     })
  
     return <>

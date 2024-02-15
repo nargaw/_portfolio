@@ -41,8 +41,8 @@ export default function About()
     let y
 
     const handleOrientation = (e) => {
-        x = (e.beta / 180) 
-        y = (e.gamma / 90 / 2) 
+        x = (e.beta / 180) * 2
+        y = (e.gamma / 90 / 2) * 2 
         // console.log(e)
     }
 
@@ -50,7 +50,7 @@ export default function About()
 
     useFrame(() => {
         
-        if(y <= 0.5 && y >= -0.5 ){
+        if(y <= 1 && y >= -1 ){
             console.log('x: ' + y)
             if(rigidBodies.current){
                 rigidBodies.current.forEach((api) => {
@@ -58,11 +58,15 @@ export default function About()
                 })
             }
         }
-        // if(y <= 1. && y >= 0.){
-        //     console.log('y: ' + y)
-        // }
 
-        
+        if(x <= 1 && x >= -1 ){
+            console.log('y: ' + x)
+            if(rigidBodies.current){
+                rigidBodies.current.forEach((api) => {
+                    api.applyImpulse({ x: 0, y: x * 50, z: 0})
+                })
+            }
+        }
 
     })
  

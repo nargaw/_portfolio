@@ -8,14 +8,14 @@ export default function About()
     const matcapLight = new TextureLoader().load('./Matcaps/matcapBlackShiny.png')
     const cubes = useRef()
     const rigidBodies = useRef()
-    const cubesCount = 50
+    const cubesCount = 20
     
     const instances = useMemo(() => {
         const objects = []
         for(let i = 0; i < cubesCount; i++){
             const angle = Math.random() * Math.PI * 2 - 20
             const radius =  Math.random() * 2 - 5
-            const x = Math.cos(angle) * radius * 10
+            const x = Math.cos(angle) * radius * 5
             const z = Math.sin(angle) * radius
             objects.push({
                 key: 'instance_' + i,
@@ -37,49 +37,37 @@ export default function About()
         return objects
     })
 
-    // let x
-    // let y
+    let x
+    let y
 
-    // const handleOrientation = (e) => {
-    //     x = -(e.beta / 180) * 2 
-    //     y = (e.gamma / 90 / 2) * 2 
-    //     // console.log(e)
-    // }
+    const handleOrientation = (e) => {
+        x = -(e.beta / 180) * 2 
+        y = (e.gamma / 90 / 2) * 2 
+        // console.log(e)
+    }
 
-    // window.addEventListener('deviceorientation', handleOrientation, true)
+    window.addEventListener('deviceorientation', handleOrientation, true)
     const rapier = useRapier()
-    // console.log(rapier.physicsOptions.gravity)
-    // console.log(rapier)
+    
     useFrame(() => {
-        // rapier.physicsOptions.gravity = [0, -9.81, 0]
-        // console.log(rapier.physicsOptions.gravity)
-        // console.log(rapier)
-
-        // console.log(rigidBodies.current)
-        // rigidBodies.current.forEach((api) => {
-        //     api.setGravityScale = 1
-        // })
-
-        // rigidBodies.current.setGravityScale = 1
-
-        // if(y <= 1 && y >= -1 ){
-        //     // console.log('x: ' + y)
-        //     if(rigidBodies.current){
-        //         rigidBodies.current.forEach((api) => {
-        //             api.applyImpulse({ x: y * 50 , y: 0, z: 0})
-        //         })
-        //     }
+        if(y <= 1 && y >= -1 ){
+            // console.log('x: ' + y)
+            if(rigidBodies.current){
+                rigidBodies.current.forEach((api) => {
+                    api.applyImpulse({ x: y * 50 , y: 0, z: 0})
+                })
+            }
             
-        // }
+        }
 
-        // if(x <= 1 && x >= -1 ){
-        //     // console.log('y: ' + x)
-        //     if(rigidBodies.current){
-        //         rigidBodies.current.forEach((api) => {
-        //             api.applyImpulse({ x: 0, y: x * 50, z: 0})
-        //         })
-        //     }
-        // }
+        if(x <= 1 && x >= -1 ){
+            // console.log('y: ' + x)
+            if(rigidBodies.current){
+                rigidBodies.current.forEach((api) => {
+                    api.applyImpulse({ x: 0, y: x * 50, z: 0})
+                })
+            }
+        }
     })
  
     return <>
@@ -88,7 +76,7 @@ export default function About()
             type="dynamic"
             restitution={0.5}
             friction={0.5}
-            gravityScale={1}
+            gravityScale={0}
             colliders="hull"
             ref={rigidBodies}
             canSleep={false}

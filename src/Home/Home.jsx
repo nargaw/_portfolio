@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber"
-import { InstancedRigidBodies} from "@react-three/rapier"
+import { InstancedRigidBodies, useRapier} from "@react-three/rapier"
 import { useMemo, useRef} from "react"
 import { TextureLoader } from "three"
 
@@ -37,36 +37,49 @@ export default function About()
         return objects
     })
 
-    let x
-    let y
+    // let x
+    // let y
 
-    const handleOrientation = (e) => {
-        x = -(e.beta / 180) * 2 
-        y = (e.gamma / 90 / 2) * 2 
-        // console.log(e)
-    }
+    // const handleOrientation = (e) => {
+    //     x = -(e.beta / 180) * 2 
+    //     y = (e.gamma / 90 / 2) * 2 
+    //     // console.log(e)
+    // }
 
-    window.addEventListener('deviceorientation', handleOrientation, true)
-
+    // window.addEventListener('deviceorientation', handleOrientation, true)
+    const rapier = useRapier()
+    // console.log(rapier.physicsOptions.gravity)
+    // console.log(rapier)
     useFrame(() => {
-        
-        if(y <= 1 && y >= -1 ){
-            // console.log('x: ' + y)
-            if(rigidBodies.current){
-                rigidBodies.current.forEach((api) => {
-                    api.applyImpulse({ x: y * 50 , y: 0, z: 0})
-                })
-            }
-        }
+        // rapier.physicsOptions.gravity = [0, -9.81, 0]
+        // console.log(rapier.physicsOptions.gravity)
+        // console.log(rapier)
 
-        if(x <= 1 && x >= -1 ){
-            // console.log('y: ' + x)
-            if(rigidBodies.current){
-                rigidBodies.current.forEach((api) => {
-                    api.applyImpulse({ x: 0, y: x * 50, z: 0})
-                })
-            }
-        }
+        // console.log(rigidBodies.current)
+        // rigidBodies.current.forEach((api) => {
+        //     api.setGravityScale = 1
+        // })
+
+        // rigidBodies.current.setGravityScale = 1
+
+        // if(y <= 1 && y >= -1 ){
+        //     // console.log('x: ' + y)
+        //     if(rigidBodies.current){
+        //         rigidBodies.current.forEach((api) => {
+        //             api.applyImpulse({ x: y * 50 , y: 0, z: 0})
+        //         })
+        //     }
+            
+        // }
+
+        // if(x <= 1 && x >= -1 ){
+        //     // console.log('y: ' + x)
+        //     if(rigidBodies.current){
+        //         rigidBodies.current.forEach((api) => {
+        //             api.applyImpulse({ x: 0, y: x * 50, z: 0})
+        //         })
+        //     }
+        // }
     })
  
     return <>
@@ -75,7 +88,7 @@ export default function About()
             type="dynamic"
             restitution={0.5}
             friction={0.5}
-            gravityScale={0}
+            gravityScale={1}
             colliders="hull"
             ref={rigidBodies}
             canSleep={false}

@@ -15,7 +15,7 @@ export default function About()
         for(let i = 0; i < cubesCount; i++){
             const angle = Math.random() * Math.PI * 2 - 20
             const radius =  Math.random() * 2 - 5
-            const x = Math.cos(angle) * radius * 5
+            const x = Math.cos(angle) * radius * 2
             const z = Math.sin(angle) * radius
             objects.push({
                 key: 'instance_' + i,

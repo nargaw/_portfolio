@@ -74,8 +74,8 @@ export default function About()
         <InstancedRigidBodies 
             instances={instances} 
             type="dynamic"
-            restitution={0.5}
-            friction={0.5}
+            restitution={0.65}
+            friction={0}
             gravityScale={0}
             colliders="hull"
             ref={rigidBodies}

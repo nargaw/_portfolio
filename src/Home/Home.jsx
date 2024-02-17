@@ -2,10 +2,13 @@ import { useFrame } from "@react-three/fiber"
 import { InstancedRigidBodies, useRapier} from "@react-three/rapier"
 import { useMemo, useRef} from "react"
 import { TextureLoader } from "three"
+import useStore from "../useStore/useStore"
 
 export default function About()
 {
-    const matcapLight = new TextureLoader().load('./Matcaps/matcapBlackShiny.png')
+    const mode = useStore(state => state.mode)
+    const matcapDark = new TextureLoader().load('./Matcaps/matcapBlackShiny.png')
+    const matcapLight = new TextureLoader().load('./Matcaps/matcapWhiteShiny.png')
     const cubes = useRef()
     const rigidBodies = useRef()
     const cubesCount = 20
@@ -89,7 +92,7 @@ export default function About()
                 castShadow
             >
                 <torusGeometry args={[3,1.5]}/>
-                <meshMatcapMaterial matcap={matcapLight} />
+                <meshMatcapMaterial matcap={mode == 'dark' ? matcapDark : matcapLight} />
             </instancedMesh>
         </InstancedRigidBodies>
     </>

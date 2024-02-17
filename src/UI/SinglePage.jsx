@@ -1,12 +1,15 @@
-import { useState } from "react"
+import useStore from '../useStore/useStore'
 
 export default function SinglePage()
 {
-    const [style, setStyle] = useState('dark')
+
+    const mode = useStore(state => state.mode)
+    const darkModeOn = useStore(state => state.darkModeOn)
+    const lightModeOn = useStore(state => state.lightModeOn)
 
     const changeStyle = () => {
-        if(style!== 'light') setStyle('light')
-        else setStyle('dark')
+        if(mode !== 'light') lightModeOn()
+        else darkModeOn()
     }
 
     const containerStyle = {
@@ -23,7 +26,7 @@ export default function SinglePage()
         position: 'relative',
         // width: '100%'
         PointerEvents: 'none',
-        backgroundColor: style == 'dark' ? "#f5f5f720" : '#0a0a0820',
+        backgroundColor: mode == 'dark' ? "#f5f5f720" : '#0a0a0820',
         transition: '.75s all ease'
     }
 
@@ -44,7 +47,7 @@ export default function SinglePage()
 
     const titleStyle = {
         fontFamily: "Inter, sans-serif",
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontStyle: "italic",
         fontSize: "36px",
         margin: '0',
@@ -53,14 +56,14 @@ export default function SinglePage()
 
     const titleDescription = {
         fontFamily: "DM Mono, monospace",
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontSize: '14px',
         transition: '.75s all ease'
     }
 
     const titleDetail = {
         fontFamily: "DM Mono, monospace",
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontSize: '14px',
         paragraphSpacing: '20px',
         lineHeight: '1.75em',
@@ -96,7 +99,7 @@ export default function SinglePage()
         height: '16px',
         position: 'relative',
         width: '16px',
-        fill: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        fill: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         transition: '.75s all ease'
     }
 
@@ -110,7 +113,7 @@ export default function SinglePage()
 
     const textParagraph = {
         fontFamily: "DM Mono, monospace",
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         fontSize: '14px',
         fontStyle: 'normal',
         textAlignment: 'start',
@@ -156,7 +159,7 @@ export default function SinglePage()
         lineHeight: '1.4em',
         paragraphSpacing: '40px',
         textAlignment: 'start',
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         transition: '.75s all ease'
     }
 
@@ -183,7 +186,7 @@ export default function SinglePage()
         lineHeight: '1.4em',
         paragraphSpacing: '0px',
         textAlignment: 'start',
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         transition: '.75s all ease'
     }
 
@@ -196,7 +199,7 @@ export default function SinglePage()
         lineHeight: '1.75em',
         paragraphSpacing: '20px',
         textAlignment: 'start',
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         transition: '.75s all ease'
     }
 
@@ -215,7 +218,7 @@ export default function SinglePage()
 
     const dividerStyle = {
         borderBottomWidth: '1px',
-        borderColor: style == 'dark' ? '#ffffff20' : '#0a0a0820' ,
+        borderColor: mode == 'dark' ? '#ffffff20' : '#0a0a0820' ,
         borderLeftWidth: '0px',
         borderRightWidth: '0px',
         borderStyle: 'solid',
@@ -248,7 +251,7 @@ export default function SinglePage()
         lineHeight: '1.4em',
         paragraphSpacing: '40px',
         textAlignment: 'start',
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         transition: '.75s all ease'
     }
 
@@ -290,7 +293,7 @@ export default function SinglePage()
         lineHeight: '1.75em',
         paragraphSpacing: '20px',
         textAlignment: 'start',
-        color: style == 'dark' ? "#f5f5f7" : '#0a0a08',
+        color: mode == 'dark' ? "#f5f5f7" : '#0a0a08',
         transition: '.75s all ease'
     }
 
@@ -308,7 +311,7 @@ export default function SinglePage()
         padding: 0,
         position: 'relative',
         width: '110px',
-        backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
+        backgroundColor: mode == 'dark' ? '#ffffff20' : '#0a0a0820',
         transition: '.75s all ease'
     }
 
@@ -326,7 +329,7 @@ export default function SinglePage()
         padding: 0,
         position: 'relative',
         width: '170px',
-        backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
+        backgroundColor: mode == 'dark' ? '#ffffff20' : '#0a0a0820',
         transition: '.75s all ease'
     }
 
@@ -344,7 +347,7 @@ export default function SinglePage()
         padding: 0,
         position: 'relative',
         width: '140px',
-        backgroundColor: style == 'dark' ? '#ffffff20' : '#0a0a0820',
+        backgroundColor: mode == 'dark' ? '#ffffff20' : '#0a0a0820',
         transition: '.75s all ease'
     }
 
@@ -426,7 +429,7 @@ export default function SinglePage()
 
     
     
-    if(style == 'dark' ? document.body.style.backgroundColor = '#000' : document.body.style.backgroundColor = '#fff')
+    if(mode == 'dark' ? document.body.style.backgroundColor = '#000' : document.body.style.backgroundColor = '#fff')
     document.body.style.transition = '.75s all ease'
 
     return <>
@@ -515,7 +518,7 @@ export default function SinglePage()
                 </div>
             </div>
             <div style={dividerStyle}></div>
-            <div onClick={changeStyle} className="toggle" style={style == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={style == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>
+            <div onClick={changeStyle} className="toggle" style={mode == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={mode == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>
             <div style={dividerStyle}></div>
         </div> 
     </>

@@ -4,7 +4,7 @@ import { useMemo, useRef} from "react"
 import { TextureLoader } from "three"
 import useStore from "../useStore/useStore"
 
-export default function About()
+export default function Objects()
 {
     const mode = useStore(state => state.mode)
     const matcapDark = new TextureLoader().load('./Matcaps/matcapBlackShiny.png')
@@ -46,7 +46,6 @@ export default function About()
     const handleOrientation = (e) => {
         upDown = -(e.beta / 180) * 2 
         leftRight = (e.gamma / 90 / 2) * 2 
-        // console.log(e)
     }
 
     window.addEventListener('deviceorientation', handleOrientation, true)
@@ -54,17 +53,14 @@ export default function About()
     
     useFrame(() => {
         if(leftRight <= 1 && leftRight >= -1 ){
-            // console.log('x: ' + y)
             if(rigidBodies.current){
                 rigidBodies.current.forEach((api) => {
                     api.applyImpulse({ x: leftRight * 50 , y: 0, z: 0})
                 })
             }
-            
         }
 
         if(upDown <= 1 && upDown >= -1 ){
-            // console.log('y: ' + x)
             if(rigidBodies.current){
                 rigidBodies.current.forEach((api) => {
                     api.applyImpulse({ x: 0, y: upDown * 50, z: 0})
@@ -84,7 +80,7 @@ export default function About()
             ref={rigidBodies}
             canSleep={false}
         >
-            <instancedMesh 
+            <instancedMesh
                 ref={cubes}
                 args={[null, null, cubesCount]}
                 dispose={null}

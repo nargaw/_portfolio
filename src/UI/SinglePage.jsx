@@ -13,6 +13,7 @@ export default function SinglePage()
     }
 
     const containerStyle = {
+        outline: 'none',
         alignContent: 'center',
         alignItems: 'center',
         display: 'flex',
@@ -24,8 +25,9 @@ export default function SinglePage()
         overflow: 'visible',
         padding: '16px',
         position: 'relative',
-        // width: '100%'
+        // width: '100%',
         PointerEvents: 'none',
+        // backdropFilter: 'blur(0.5px)',
         backgroundColor: mode == 'dark' ? "#f5f5f720" : '#0a0a0820',
         transition: '.75s all ease'
     }

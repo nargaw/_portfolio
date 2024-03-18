@@ -438,8 +438,8 @@ export default function SinglePage()
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
-                <div style={titleDescription}>Creative Developer and Designer</div>
-                <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences to solve real-life problems. Dedicated to building and supporting the community.</div>
+                <div style={titleDescription}>Creative Technologist</div>
+                <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>
                         <div style={titleExtraMapPinLocation}>
@@ -450,12 +450,12 @@ export default function SinglePage()
                             <p style={textParagraph}>Greenville, SC, USA</p>
                         </div>
                     </div>
-                    <div style={titleAvailability}>
+                    {/* <div style={titleAvailability}>
                         <div className="glowCircle"></div>
                         <div style={titleExtraLocationText}>
                             <p style={textParagraph}>Available for Freelance Projects</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div style={dividerStyle}></div>
@@ -487,15 +487,19 @@ export default function SinglePage()
                 </div>  
                 <div style={projectMainStyle}>
                     {/* project three title */}
-                    <p style={projectTitleStyle}>SOST STUDIO</p>
+                    {/* <p style={projectTitleStyle}>SOST STUDIO</p> */}
+                    <p style={projectTitleStyle}>Balanc3D Game</p>
                     
                     {/* project three detail */}
-                    <p style={projectDetailStyle}>
+                    {/* <p style={projectDetailStyle}>
                         SOST STUDIO is a design and development studio with highest standards in producing immersive and engaging web experiences to elevate brands by expanding reach, enchancing customer experience and help businesses unlock their full potential.
+                    </p> */}
+                    <p style={projectDetailStyle}>
+                    This project emerged from the exploration of the interaction of mobile device orientation API and Physics to create engaging and immersive web experiences. In this platform game the user, guides the player object to the finish by tilting the mobile device.
                     </p>
 
                     {/* project three link */}
-                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="">soststudio.com (coming soon)</a></p>
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.balanc3dgame.com">balanc3dgame.com</a></p>
                 </div>
             </div>
             <div style={dividerStyle}></div>

@@ -379,6 +379,22 @@ export default function SinglePage()
         transition: '.75s all ease'
     }
 
+    const link2 = {
+        fontFamily: "DM Mono, monospace",
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: '400',
+        letterSpacing: '0px',
+        lineHeight: '1.75em',
+        paragraphSpacing: '20px',
+        textAlignment: 'start',
+        display: 'flex',
+        alignItems: 'center',
+        color: "#0989f8",
+        textDecoration: 'none',
+        transition: '.75s all ease'
+    }
+
     const lightDarkToggleStyle = {
         display: 'flex',
         background: '#ffffff',
@@ -502,6 +518,7 @@ export default function SinglePage()
                     <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.balanc3dgame.com">balanc3dgame.com</a></p>
                 </div>
             </div>
+            
             <div style={dividerStyle}></div>
             <div style={contactStyle}>
                 <div style={contactTitleStyle}>Contact</div>
@@ -523,6 +540,10 @@ export default function SinglePage()
                     </div>
                 </div>
             </div>
+            <div style={dividerStyle}></div>
+               
+            <a style={link2} href="https://drive.google.com/file/d/1jJwQ33cIR-HNykZnFeOjVSiaq1nBYEvZ/view?usp=sharing">Download Resume</a>
+           
             <div style={dividerStyle}></div>
             <div onClick={changeStyle} className="toggle" style={mode == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={mode == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>
             <div style={dividerStyle}></div>

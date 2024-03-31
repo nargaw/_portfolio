@@ -454,7 +454,7 @@ export default function SinglePage()
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
-                <div style={titleDescription}>Creative Technologist</div>
+                <div style={titleDescription}>Front-End Developer w/ expertise in WebGL</div>
                 <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>
@@ -483,11 +483,11 @@ export default function SinglePage()
                     
                     {/* project one detail */}
                     <p style={projectDetailStyle}>
-                        LUMEPATH is a web-based medical software application built to help patients understand their diagnosis in an engaging and interactive way by utilizing 3D anatomic models.
+                        LUMEPATH is a web-based medical software application built to help patients understand their diagnosis in an engaging and interactive way by utilizing 3D anatomic models. Utilizing my previous background in Pathology and expertise in 3D web development, I am building this app from the ground up to improve the quality of care for patients and enhance the diagnostic process.
                     </p>
 
                     {/* project one link */}
-                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p>
+                    {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
                 </div>
                 <div style={projectMainStyle}>
                     {/* project two title */}
@@ -495,7 +495,7 @@ export default function SinglePage()
                     
                     {/* project two detail */}
                     <p style={projectDetailStyle}>
-                        SHADER DAILY is a compilation of more than 700 shader projects that are easily accessible in a single website. Projects are built using fragment and vertex shaders utilizing the Three.js library.
+                        SHADER DAILY is a compilation of more than 700 shader projects that are easily accessible in a single website. This website allows me to track my exploration of art and code as well as document technical graphics programming concepts and share this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
                     </p>
 
                     {/* project two link */}
@@ -511,11 +511,11 @@ export default function SinglePage()
                         SOST STUDIO is a design and development studio with highest standards in producing immersive and engaging web experiences to elevate brands by expanding reach, enchancing customer experience and help businesses unlock their full potential.
                     </p> */}
                     <p style={projectDetailStyle}>
-                    This project emerged from the exploration of the interaction of mobile device orientation API and Physics to create engaging and immersive web experiences. In this platform game the user, guides the player object to the finish by tilting the mobile device.
+                    This project emerged from the exploration of the interaction between the mobile device orientation events API and Physics. The result turned into this platform game. In this 10 level game, the user guides the player object to the finish by tilting the mobile device.
                     </p>
 
                     {/* project three link */}
-                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.balanc3dgame.com">balanc3dgame.com</a></p>
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://natedev.gumroad.com/l/balanc3d">https://natedev.gumroad.com/l/balanc3d</a></p>
                 </div>
             </div>
             
@@ -542,7 +542,7 @@ export default function SinglePage()
             </div>
             <div style={dividerStyle}></div>
                
-            <a style={link2} href="https://drive.google.com/file/d/1jJwQ33cIR-HNykZnFeOjVSiaq1nBYEvZ/view?usp=sharing">Download Resume</a>
+            <a style={link2} href="https://drive.google.com/file/d/1WSpikyXjMj9fjR3DC2HvU2XpoqYI4Wze/view?usp=sharing">Download Resume</a>
            
             <div style={dividerStyle}></div>
             <div onClick={changeStyle} className="toggle" style={mode == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={mode == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>

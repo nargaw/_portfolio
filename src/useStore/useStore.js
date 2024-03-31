@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 export default create((set, get) => {
     return {
-        mode: 'light',
+        mode: 'dark',
 
         darkModeOn: () =>
         {

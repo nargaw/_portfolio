@@ -542,7 +542,7 @@ export default function SinglePage()
             </div>
             <div style={dividerStyle}></div>
                
-            <a style={link2} href="https://drive.google.com/file/d/1WSpikyXjMj9fjR3DC2HvU2XpoqYI4Wze/view?usp=sharing">Download Resume</a>
+            <a style={link2} href="https://drive.google.com/file/d/1X9ne9HDmuQHjxl8vDflM8wBhz_fnbs2a/view?usp=sharing">Download Resume</a>
            
             <div style={dividerStyle}></div>
             <div onClick={changeStyle} className="toggle" style={mode == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={mode == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>

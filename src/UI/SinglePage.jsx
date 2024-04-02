@@ -487,7 +487,7 @@ export default function SinglePage()
                     </p>
 
                     {/* project one link */}
-                    {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p>
                 </div>
                 <div style={projectMainStyle}>
                     {/* project two title */}

@@ -515,7 +515,7 @@ export default function SinglePage()
                     </p>
 
                     {/* project three link */}
-                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://natedev.gumroad.com/l/balanc3d">https://natedev.gumroad.com/l/balanc3d</a></p>
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.balanc3dgame.com/">https://www.balanc3dgame.com/</a></p>
                 </div>
             </div>
             

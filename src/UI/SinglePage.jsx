@@ -477,18 +477,18 @@ export default function SinglePage()
             <div style={dividerStyle}></div>
             <div style={projectsStyle}>
                 <p style={projectsTitleStyle}>Projects</p>
-                <div style={projectMainStyle}>
+                {/* <div style={projectMainStyle}> */}
                     {/* project one title */}
-                    <p style={projectTitleStyle}>LUMEPATH</p>
+                    {/* <p style={projectTitleStyle}>LUMEPATH</p> */}
                     
                     {/* project one detail */}
-                    <p style={projectDetailStyle}>
+                    {/* <p style={projectDetailStyle}>
                         LUMEPATH is a web-based medical software application built to help patients understand their diagnosis in an engaging and interactive way by utilizing 3D anatomic models. Utilizing my previous background in Pathology and expertise in 3D web development, I am building this app from the ground up to improve the quality of care for patients and enhance the diagnostic process.
-                    </p>
+                    </p> */}
 
                     {/* project one link */}
-                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p>
-                </div>
+                    {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
+                {/* </div> */}
                 <div style={projectMainStyle}>
                     {/* project two title */}
                     <p style={projectTitleStyle}>SHADER DAILY</p>

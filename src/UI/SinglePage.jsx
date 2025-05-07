@@ -454,7 +454,7 @@ export default function SinglePage()
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
-                <div style={titleDescription}>Front-End Developer w/ expertise in WebGL</div>
+                <div style={titleDescription}>Creative Technologist | GLSL Shaders</div>
                 <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>

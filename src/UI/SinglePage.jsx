@@ -495,7 +495,7 @@ export default function SinglePage()
                     
                     {/* project two detail */}
                     <p style={projectDetailStyle}>
-                        SHADER DAILY is a compilation of more than 700 shader projects that are easily accessible in a single website. This website allows me to track my exploration of art and code as well as document technical graphics programming concepts and share this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
+                        SHADER DAILY is a compilation of more than 900 shader projects that are easily accessible in a single website. This website allows me to track my exploration of art and code as well as document technical graphics programming concepts and share this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
                     </p>
 
                     {/* project two link */}

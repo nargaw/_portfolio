@@ -535,8 +535,7 @@ export default function SinglePage()
                     </div>
                 </div>
             </div>
-            {/* <div style={dividerStyle}></div> */}
-               
+            {/* <div style={dividerStyle}></div> */}             
             {/* <a style={link2} href="https://drive.google.com/file/d/1X9ne9HDmuQHjxl8vDflM8wBhz_fnbs2a/view?usp=sharing">Download Resume</a> */}
            
             <div style={dividerStyle}></div>

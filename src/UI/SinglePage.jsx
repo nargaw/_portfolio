@@ -445,8 +445,6 @@ export default function SinglePage()
         transition: '.75s all ease'
     }
 
-    
-    
     if(mode == 'dark' ? document.body.style.backgroundColor = '#000' : document.body.style.backgroundColor = '#fff')
     document.body.style.transition = '.75s all ease'
 
@@ -477,25 +475,24 @@ export default function SinglePage()
             <div style={dividerStyle}></div>
             <div style={projectsStyle}>
                 <p style={projectsTitleStyle}>Projects</p>
-                {/* <div style={projectMainStyle}> */}
+                <div style={projectMainStyle}>
                     {/* project one title */}
-                    {/* <p style={projectTitleStyle}>LUMEPATH</p> */}
+                    <p style={projectTitleStyle}>SOST STUDIO - Owner</p>
                     
                     {/* project one detail */}
-                    {/* <p style={projectDetailStyle}>
-                        LUMEPATH is a web-based medical software application built to help patients understand their diagnosis in an engaging and interactive way by utilizing 3D anatomic models. Utilizing my previous background in Pathology and expertise in 3D web development, I am building this app from the ground up to improve the quality of care for patients and enhance the diagnostic process.
-                    </p> */}
-
+                    <p style={projectDetailStyle}>
+                    Sost Studio is an independent game development studio in Greenville, SC focused on make games specifically for the web browser. Sost Studio also specializes in graphics programming and dynamic shader effects for games and web experiences.
+                    </p>
                     {/* project one link */}
                     {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
-                {/* </div> */}
+                </div>
                 <div style={projectMainStyle}>
                     {/* project two title */}
                     <p style={projectTitleStyle}>SHADER DAILY</p>
                     
                     {/* project two detail */}
                     <p style={projectDetailStyle}>
-                        SHADER DAILY is a compilation of more than 900 shader projects that are easily accessible in a single website. This website allows me to track my exploration of art and code as well as document technical graphics programming concepts and share this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
+                        SHADER DAILY is a compilation of 950+ shader projects that are easily accessible in a single website. This website allows me to track my exploration of art and code as well as document technical graphics programming concepts and share this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
                     </p>
 
                     {/* project two link */}
@@ -503,13 +500,10 @@ export default function SinglePage()
                 </div>  
                 <div style={projectMainStyle}>
                     {/* project three title */}
-                    {/* <p style={projectTitleStyle}>SOST STUDIO</p> */}
                     <p style={projectTitleStyle}>Balanc3D Game</p>
                     
                     {/* project three detail */}
-                    {/* <p style={projectDetailStyle}>
-                        SOST STUDIO is a design and development studio with highest standards in producing immersive and engaging web experiences to elevate brands by expanding reach, enchancing customer experience and help businesses unlock their full potential.
-                    </p> */}
+                    
                     <p style={projectDetailStyle}>
                     This project emerged from the exploration of the interaction between the mobile device orientation events API and Physics. The result turned into this platform game. In this 10 level game, the user guides the player object to the finish by tilting the mobile device.
                     </p>
@@ -528,16 +522,16 @@ export default function SinglePage()
                         <div style={contactItemLine}></div>
                         <p style={contactItemLink}><a style={link} href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
                     </div>
-                    <div style={contactItemStyle}>
+                    {/* <div style={contactItemStyle}>
                         <p style={contactItemLabel}>Twitter</p>
                         <div style={contactItemLine2}></div>
-                        <p style={contactItemLink}><a style={link} href="https://twitter.com/nate_dev_">@nate_dev_</a></p>
+                      s p  <p style={contactItemLink}><a style={link} href="https://twitter.com/nate_dev_">@nate_dev_</a></p>
                     </div>
                     <div style={contactItemStyle}>
-                        <p style={contactItemLabel}>Linkedin</p>
+                        <p style={contactItemLabel}>Discord</p>
                         <div style={contactItemLine3}></div>
                         <p style={contactItemLink}><a style={link} href="https://www.linkedin.com/in/nateargaw/">in/nateargaw</a></p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {/* <div style={dividerStyle}></div> */}

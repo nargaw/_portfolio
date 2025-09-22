@@ -522,22 +522,9 @@ export default function SinglePage()
                         <div style={contactItemLine}></div>
                         <p style={contactItemLink}><a style={link} href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
                     </div>
-                    {/* <div style={contactItemStyle}>
-                        <p style={contactItemLabel}>Twitter</p>
-                        <div style={contactItemLine2}></div>
-                      s p  <p style={contactItemLink}><a style={link} href="https://twitter.com/nate_dev_">@nate_dev_</a></p>
-                    </div>
-                    <div style={contactItemStyle}>
-                        <p style={contactItemLabel}>Discord</p>
-                        <div style={contactItemLine3}></div>
-                        <p style={contactItemLink}><a style={link} href="https://www.linkedin.com/in/nateargaw/">in/nateargaw</a></p>
-                    </div> */}
                 </div>
             </div>
-            {/* <div style={dividerStyle}></div> */}
-               
-            {/* <a style={link2} href="https://drive.google.com/file/d/1X9ne9HDmuQHjxl8vDflM8wBhz_fnbs2a/view?usp=sharing">Download Resume</a> */}
-           
+        
             <div style={dividerStyle}></div>
             <div onClick={changeStyle} className="toggle" style={mode == 'dark' ? lightDarkToggleStyle : lightDarkToggleStyle2}><div className="toggleCircle" style={mode == 'dark' ?toggleCircleStyle : toggleCircleStyle2}></div></div>
             <div style={dividerStyle}></div>

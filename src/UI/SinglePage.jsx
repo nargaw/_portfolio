@@ -454,8 +454,8 @@ export default function SinglePage()
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
-                <div style={titleDescription}>Creative Technologist | GLSL Shaders</div>
-                <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
+                <div style={titleDescription}>Shader Artist</div>
+                <div style={titleDetail}>A passionate software developer and shader artist adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>
                         <div style={titleExtraMapPinLocation}>
@@ -477,6 +477,20 @@ export default function SinglePage()
             <div style={dividerStyle}></div>
             <div style={projectsStyle}>
                 <p style={projectsTitleStyle}>Projects</p>
+                
+                <div style={projectMainStyle}>
+                    {/* project one title */}
+                    <p style={projectTitleStyle}>GVL Game Devs</p>
+                    
+                    {/* project three detail */}
+                    <p style={projectDetailStyle}>
+                        Founder and Organizer at GVL Game Devs. GVL Game Devs is a community based in Greenville, SC at supports anyone interested in building games. As a community we explore topics such as art, programming, audio and much more. 
+                    </p> 
+                    
+                    {/* project one link */}
+                    {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
+                </div>
+
                 <div style={projectMainStyle}>
                     {/* project one title */}
                     <p style={projectTitleStyle}>SOST STUDIO</p>
@@ -495,7 +509,7 @@ export default function SinglePage()
                     
                     {/* project two detail */}
                     <p style={projectDetailStyle}>
-                        SHADER DAILY is a compilation of more than 900 shader projects that are easily accessible in a single website. This website allows me to track my exploration of art and code as well as document technical graphics programming concepts and share this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
+                        SHADER DAILY is a compilation of 1000 shader projects that are easily accessible in a single website. This website presents the intersection of art and code while documenting the technical graphics programming concepts and sharing this knowledge with the community. Projects are built using fragment and vertex shaders written in GLSL and React-three-fiber.
                     </p>
 
                     {/* project two link */}
@@ -524,14 +538,9 @@ export default function SinglePage()
                         <p style={contactItemLink}><a style={link} href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
                     </div>
                     <div style={contactItemStyle}>
-                        <p style={contactItemLabel}>Twitter</p>
-                        <div style={contactItemLine2}></div>
-                        <p style={contactItemLink}><a style={link} href="https://twitter.com/nate_dev_">@nate_dev_</a></p>
-                    </div>
-                    <div style={contactItemStyle}>
-                        <p style={contactItemLabel}>Linkedin</p>
-                        <div style={contactItemLine3}></div>
-                        <p style={contactItemLink}><a style={link} href="https://www.linkedin.com/in/nateargaw/">in/nateargaw</a></p>
+                        <p style={contactItemLabel}>GitHub</p>
+                        <div style={contactItemLine}></div>
+                        <p style={contactItemLink}><a style={link} href="https://github.com/nargaw">github.com/nargaw</a></p>
                     </div>
                 </div>
             </div>

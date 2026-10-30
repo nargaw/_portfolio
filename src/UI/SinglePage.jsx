@@ -452,8 +452,8 @@ export default function SinglePage()
         <div style={containerStyle} className="container">
             <div style={headerStyle}>
                 <h1 style={titleStyle}>Nate Argaw</h1>
-                <div style={titleDescription}>Shader Artist</div>
-                <div style={titleDetail}>A passionate shader artist and software developer adept at utilizing cutting-edge web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
+                <div style={titleDescription}>Creative Technologist | GLSL Shaders</div>
+                <div style={titleDetail}>A passionate software developer adept at utilizing cutting-edge, AI-FREE web technologies to create immersive, engaging and interactive experiences. Dedicated to building and supporting the community.</div>
                 <div style={titleExtra}>
                     <div style={titleExtraLocation}>
                         <div style={titleExtraMapPinLocation}>
@@ -474,33 +474,34 @@ export default function SinglePage()
             </div>
             <div style={dividerStyle}></div>
             <div style={projectsStyle}>
-                <p style={projectsTitleStyle}>Projects</p>
-
-                <div style={projectMainStyle}>
-                    {/* project one title */}
-                    <p style={projectTitleStyle}>GVL Game Devs</p>
-
-                    {/* project three detail */}
-                    <p style={projectDetailStyle}>
-                        Founder and Organizer at GVL Game Devs. GVL Game Devs is a community based in Greenville, SC at supports anyone interested in building games. As a community we explore topics such as art, programming, audio and much more. 
-                    </p> 
-
-                    {/* project one link */}
-                    {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
-                </div>
-
-
+                <p style={projectsTitleStyle}>Experience</p>
                 <div style={projectMainStyle}>
                     {/* project one title */}
                     <p style={projectTitleStyle}>SOST STUDIO </p>
                     
                     {/* project one detail */}
                     <p style={projectDetailStyle}>
-                    Founder of Sost Studio - game development studio in Greenville, SC focused on make games specifically for the web browser. Sost Studio also specializes in graphics programming and dynamic shader effects for games and web experiences.
+                    Sost Studio is an AI-FREE, independent game and web development studio that makes interactive content specifically for the web browser. Sost Studio specializes in graphics programming and dynamic shader effects for games and web experiences.
                     </p>
                     {/* project one link */}
-                    {/* <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.lumepath.org">lumepath.org (coming soon)</a></p> */}
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.soststudio.com">soststudio.com</a></p>
                 </div>
+
+                <div style={projectMainStyle}>
+                    {/* project one title */}
+                    <p style={projectTitleStyle}>GVL Game Devs - Founder</p>
+                    
+                    {/* project one detail */}
+                    <p style={projectDetailStyle}>
+                    Greenville Game Devs is a group that focuses on supporting game developers of all skill levels in the upstate SC area. We meet to discuss various range of topics in Game Development. Join us!
+                    </p>
+                    {/* project one link */}
+                    <p style={projectLinkStyle}><a style={projectLinkStyle} href="https://www.gvlgamedevs.com">gvlgamedevs.com</a></p>
+                </div>
+
+
+                <p style={projectsTitleStyle}>Projects</p>
+                
                 <div style={projectMainStyle}>
                     {/* project two title */}
                     <p style={projectTitleStyle}>SHADER DAILY</p>
@@ -520,7 +521,7 @@ export default function SinglePage()
                     {/* project three detail */}
                     
                     <p style={projectDetailStyle}>
-                    This project emerged from the exploration of the interaction between the mobile device orientation events API and Physics. The result turned into this platform game. In this 10 level game, the user guides the player object to the finish by tilting the mobile device.
+                    A Hacker News Top 10 project. This project emerged from the exploration of the interaction between the mobile device orientation events API and Physics. The result turned into this platform game. In this 10 level game, the user guides the player object to the finish by tilting the mobile device.
                     </p>
 
                     {/* project three link */}

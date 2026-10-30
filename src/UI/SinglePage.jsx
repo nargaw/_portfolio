@@ -538,11 +538,6 @@ export default function SinglePage()
                         <div style={contactItemLine}></div>
                         <p style={contactItemLink}><a style={link} href="mailto: nateargaw@gmail.com">nateargaw@gmail.com</a></p>
                     </div>
-                    <div style={contactItemStyle}>
-                        <p style={contactItemLabel}>GitHub</p>
-                        <div style={contactItemLine}></div>
-                        <p style={contactItemLink}><a style={link} href="github.com/nargaw">github.com/nargaw</a></p>
-                    </div>
                 </div>
             </div>
         
